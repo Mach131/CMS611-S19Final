@@ -36,7 +36,15 @@ public class GameFlowController : MonoBehaviour
         //when the quota is due
         public int turnNumber;
         //maps the index of the crop (in availableCrops) to how many are needed
-        public Dictionary<int, int> cropIndexToRequiredAmount;
+        [SerializeField]
+        public List<Requirement> cropRequirements;
+
+        [System.Serializable]
+        public struct Requirement
+        {
+            public int cropIndex;
+            public int requiredAmount;
+        }
     }
 
 
