@@ -10,8 +10,9 @@ public class Plot : MonoBehaviour
     public bool currentlyAvailable;
     public Seed plantedSeed;
     public GameObject plotMenu;
-    [Header("Reference to seed prefab")]
+    [Header("Reference to prefabs")]
     public GameObject seedPrefabObject;
+    public GameObject plantMenuPrefab;
 
     private Player player;
 
@@ -20,6 +21,8 @@ public class Plot : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         currentlyAvailable = true;
+
+        plotMenu = Instantiate(plantMenuPrefab, transform);
     }
 
     /////Public UI functions
@@ -37,6 +40,7 @@ public class Plot : MonoBehaviour
         if (!currentlyAvailable && plantedSeed.isDoneGrowing())
         {
             player.cropInventory[plantedSeed.cropType] += 1;
+            Debug.Log(plantedSeed.cropType + ": " + player.cropInventory[plantedSeed.cropType]);
 
             Destroy(plantedSeed.gameObject);
             currentlyAvailable = true;
@@ -63,8 +67,7 @@ public class Plot : MonoBehaviour
     {
         if (currentlyAvailable)
         {
-            Destroy(this.plotMenu);
-            this.plotMenu = null;
+            this.plotMenu.SetActive(false);
 
             //make seed, initialize with given type
             GameObject newPlant = Instantiate(seedPrefabObject, transform);
@@ -78,13 +81,13 @@ public class Plot : MonoBehaviour
     /// <summary>
     /// Brings up a menu for this plot object.
     /// </summary>
-    /// <param name="plotMenu">The menu to bring up</param>
-    public void PlotMenu(GameObject plotMenu)
+    public void PlotMenu()
     {
         Debug.Log("I have been clicked");
-        if (currentlyAvailable && this.plotMenu == null) 
+        if (currentlyAvailable) 
         {
-            this.plotMenu = Instantiate(plotMenu, transform);
+            this.plotMenu.SetActive(true);
+            this.plotMenu.GetComponent<PlantMenu>().Initialize(this);
         }
     }
 

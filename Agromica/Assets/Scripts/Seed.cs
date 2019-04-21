@@ -17,6 +17,7 @@ public class Seed : MonoBehaviour
     /// <param name="cropType">The crop type that this seed grows into; must be listed in GameFlowController's available crops</param>
     public void Initialize(string cropType)
     {
+        this.cropType = cropType;
         GameFlowController mainController = FindObjectOfType<GameFlowController>();
         GameFlowController.Crop cropInfo = mainController.cropLookup(cropType);
         growthTurnsRemaining = cropInfo.turnsToGrow;
