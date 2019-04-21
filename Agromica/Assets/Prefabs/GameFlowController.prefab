@@ -43,3 +43,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d886d62905dd5e4fb2c80bcc7548d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfRounds: 9
+  availableCrops:
+  - cropName: Red
+    turnsToGrow: 1
+  - cropName: Yellow
+    turnsToGrow: 2
+  - cropName: Blue
+    turnsToGrow: 3
+  quotas:
+  - turnNumber: 3
+    cropRequirements:
+    - cropIndex: 0
+      requiredAmount: 2
+    - cropIndex: 2
+      requiredAmount: 1
+  - turnNumber: 6
+    cropRequirements:
+    - cropIndex: 1
+      requiredAmount: 2
+    - cropIndex: 0
+      requiredAmount: 1
+  - turnNumber: 9
+    cropRequirements:
+    - cropIndex: 0
+      requiredAmount: 3
+    - cropIndex: 1
+      requiredAmount: 4
+    - cropIndex: 2
+      requiredAmount: 2
+  playerObject: {fileID: 0}

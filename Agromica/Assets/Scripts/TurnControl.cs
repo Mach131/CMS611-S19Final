@@ -31,8 +31,8 @@ public class TurnControl : MonoBehaviour
         while (TurnControl.PLOTS.Count > 0)
         {
             Plot plot = TurnControl.PLOTS[0].GetComponent<Plot>();
-            int item = plot.Harvest();
-            Debug.Log(item);
+            //int item = plot.Harvest();
+            //Debug.Log(item);
             TurnControl.PLOTS.Remove(plot.gameObject);
         }
     }

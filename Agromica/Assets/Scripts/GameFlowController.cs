@@ -16,6 +16,11 @@ public class GameFlowController : MonoBehaviour
     //TODO: market
 
     private int currentTurn;
+    private Player player;
+    private Dictionary<string, Crop> nameToCrop;
+    private Dictionary<int, Quota> turnToQuota;
+
+    /////Helper Classes
 
     /// <summary>
     /// Represents a crop, containing data that the market needs to be initialized
@@ -24,6 +29,7 @@ public class GameFlowController : MonoBehaviour
     public class Crop
     {
         public string cropName;
+        public int turnsToGrow;
         //TODO: stuff that the market needs to know (reactivity, starting prices)
     }
 
@@ -47,12 +53,93 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
+    /////Public Methods
+
+    /// <summary>
+    /// Get the crop information object associated with the given crop name.
+    /// </summary>
+    /// <param name="cropName">The name of the desired crop</param>
+    /// <returns>The informational object associated with that crop</returns>
+    public Crop cropLookup(string cropName)
+    {
+        return nameToCrop[cropName];
+    }
+
+    /// <summary>
+    /// Perform the game updates that occur between turns, particularly growing crops and filling quotas.
+    /// </summary>
+    public void updateTurn()
+    {
+        //quotas
+        if (turnToQuota.ContainsKey(currentTurn))
+        {
+            bool failedQuota = false;
+
+            Quota currentQuota = turnToQuota[currentTurn];
+            foreach (Quota.Requirement req in currentQuota.cropRequirements)
+            {
+                string reqCrop = availableCrops[req.cropIndex].cropName;
+                if (player.cropInventory[reqCrop] >= req.requiredAmount)
+                {
+                    player.cropInventory[reqCrop] -= req.requiredAmount;
+                } else
+                {
+                    failedQuota = true;
+                }
+            }
+
+            if (failedQuota)
+            {
+                Debug.Log("failed quota");
+                //TODO: failure penalty
+            }
+        }
+
+        //win condition
+        if (currentTurn >= numberOfRounds)
+        {
+            Debug.Log("all rounds finished");
+            //TODO: win condition, making sure u haven't already lost
+        }
+        else
+        {
+
+            //growing
+            Farm[] farms = FindObjectsOfType<Farm>();
+            foreach (Farm farm in farms)
+            {
+                farm.passTurn();
+            }
+
+            currentTurn += 1;
+        }
+    }
+
+    /////Private Methods
 
     /// <summary>
     /// Initialize the scenario
     /// </summary>
     private void Start()
     {
+        player = FindObjectOfType<Player>();
+        nameToCrop = new Dictionary<string, Crop>();
+        turnToQuota = new Dictionary<int, Quota>();
+
+        //make dictionaries from public lists to facilitate other methods
+        //use crop list to make dict, then seeds can use it to figure out growth time
+        foreach (Crop crop in availableCrops)
+        {
+            nameToCrop.Add(crop.cropName, crop);
+            //initialize player inventory while we're at it
+            player.cropInventory.Add(crop.cropName, 0);
+        }
+        //use quota list to make dict so that it can easily check when something is due
+        foreach (Quota quota in quotas) {
+            turnToQuota.Add(quota.turnNumber, quota);
+        }
+        
+
         //TODO: send crop info to market
         currentTurn = 0;
     }

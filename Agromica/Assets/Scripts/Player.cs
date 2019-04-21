@@ -7,15 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int currentMoney;
+    public int currentDebt;
+    public Dictionary<string, int> cropInventory = new Dictionary<string, int>();
 }
