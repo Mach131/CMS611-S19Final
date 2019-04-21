@@ -9,7 +9,7 @@ public class Plot : MonoBehaviour
 {
     public bool currentlyAvailable;
     public Seed plantedSeed;
-    public Canvas plotMenu;
+    public GameObject plotMenu;
     [Header("Reference to seed prefab")]
     public GameObject seedPrefabObject;
 
@@ -48,6 +48,14 @@ public class Plot : MonoBehaviour
     }
 
     /// <summary>
+    /// Harvests a crop, but doesn't return information about its success. Meant to make things work with GUI.
+    /// </summary>
+    public void attemptHarvest()
+    {
+        Harvest();
+    }
+
+    /// <summary>
     /// Plants a seed in this plot. Does nothing if this plot is already occupied.
     /// </summary>
     /// <param name="type">The name of the crop to plant here; must be listed in GameFlowController's available crops</param>
@@ -55,7 +63,8 @@ public class Plot : MonoBehaviour
     {
         if (currentlyAvailable)
         {
-            this.plotMenu.gameObject.SetActive(false);
+            Destroy(this.plotMenu);
+            this.plotMenu = null;
 
             //make seed, initialize with given type
             GameObject newPlant = Instantiate(seedPrefabObject, transform);
@@ -70,13 +79,12 @@ public class Plot : MonoBehaviour
     /// Brings up a menu for this plot object.
     /// </summary>
     /// <param name="plotMenu">The menu to bring up</param>
-    public void PlotMenu(Canvas plotMenu)
+    public void PlotMenu(GameObject plotMenu)
     {
         Debug.Log("I have been clicked");
-        if (currentlyAvailable) 
+        if (currentlyAvailable && this.plotMenu == null) 
         {
-            this.plotMenu = plotMenu;
-            this.plotMenu.gameObject.SetActive(true); 
+            this.plotMenu = Instantiate(plotMenu, transform);
         }
     }
 
