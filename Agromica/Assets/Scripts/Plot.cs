@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Represents a plot for seeds to grow in.
@@ -83,11 +84,11 @@ public class Plot : MonoBehaviour
     /// </summary>
     public void PlotMenu()
     {
-        Debug.Log("I have been clicked");
         if (currentlyAvailable) 
         {
             this.plotMenu.SetActive(true);
             this.plotMenu.GetComponent<PlantMenu>().Initialize(this);
+            // Change text to Open Plot
         }
     }
 
@@ -102,6 +103,21 @@ public class Plot : MonoBehaviour
     {
         if (!currentlyAvailable)
         {
+
+            int turns = plantedSeed.timeLeft() - 1;
+            if (turns < 0)
+                turns = 0;
+            Transform[] ts = this.gameObject.GetComponentsInChildren<Transform>();
+            Text timeLeft = null;
+            foreach (Transform child in ts)
+            {
+                if (child.name is "PlantText")
+                    timeLeft = child.gameObject.GetComponent<Text>();
+
+            }
+            timeLeft.text = turns.ToString();
+            if (turns == 0)
+                timeLeft.text = "Harvest";
             return plantedSeed.passTurn();
         }
         return false;

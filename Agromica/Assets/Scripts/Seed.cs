@@ -41,4 +41,9 @@ public class Seed : MonoBehaviour
     {
         return growthTurnsRemaining <= 0;
     }
+
+    public int timeLeft()
+    {
+        return growthTurnsRemaining;
+    }
 }
