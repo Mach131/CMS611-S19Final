@@ -1,0 +1,23 @@
+{
+	"rounds" : 9,
+	"crops" : [
+		{"cropName" : "Red", "turnsToGrow" : 1},
+		{"cropName" : "Yellow", "turnsToGrow" : 2},
+		{"cropName" : "Blue", "turnsToGrow" : 3}
+	],
+	"quotas" : [
+		{"turnNumber" : 3, "cropRequirements" : [
+			{"cropName" : "Red", "requiredAmount" : 2},
+			{"cropName" : "Blue", "requiredAmount" : 1}
+		]},
+		{"turnNumber" : 6, "cropRequirements" : [
+			{"cropName" : "Red", "requiredAmount" : 1},
+			{"cropName" : "Yellow", "requiredAmount" : 2}
+		]},
+		{"turnNumber" : 9, "cropRequirements" : [
+			{"cropName" : "Red", "requiredAmount" : 3},
+			{"cropName" : "Yellow", "requiredAmount" : 4},
+			{"cropName" : "Blue", "requiredAmount" : 2}
+		]}
+	]
+}

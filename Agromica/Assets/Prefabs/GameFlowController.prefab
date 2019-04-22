@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d886d62905dd5e4fb2c80bcc7548d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadFromFile: 1
+  scenarioData: {fileID: 4900000, guid: 861d96ab091f4d645b07e3e62a895b68, type: 3}
   numberOfRounds: 9
   availableCrops:
   - cropName: Red
@@ -54,22 +56,22 @@ MonoBehaviour:
   quotas:
   - turnNumber: 3
     cropRequirements:
-    - cropIndex: 0
+    - cropName: Red
       requiredAmount: 2
-    - cropIndex: 2
+    - cropName: Blue
       requiredAmount: 1
   - turnNumber: 6
     cropRequirements:
-    - cropIndex: 1
+    - cropName: Yellow
       requiredAmount: 2
-    - cropIndex: 0
+    - cropName: Red
       requiredAmount: 1
   - turnNumber: 9
     cropRequirements:
-    - cropIndex: 0
+    - cropName: Red
       requiredAmount: 3
-    - cropIndex: 1
+    - cropName: Yellow
       requiredAmount: 4
-    - cropIndex: 2
+    - cropName: Blue
       requiredAmount: 2
   playerObject: {fileID: 0}

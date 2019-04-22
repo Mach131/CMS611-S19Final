@@ -61,10 +61,12 @@ public class GameFlowController : MonoBehaviour
     [System.Serializable]
     private class ScenarioDataLoader
     {
-        public int rounds;
-        public Crop[] crops;
-        public Quota[] quotas;
+        public int rounds = 0;
+        public Crop[] crops = new Crop[0];
+        public Quota[] quotas = new Quota[0];
     }
+
+
 
     /////Public Methods
 
