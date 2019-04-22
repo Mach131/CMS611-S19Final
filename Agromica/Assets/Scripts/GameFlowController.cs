@@ -7,9 +7,10 @@ using UnityEngine;
 /// </summary>
 public class GameFlowController : MonoBehaviour
 {
-    [Header("Scenario Data")]
+    [Header("Scenario Data Files")]
     public bool loadFromFile;
     public TextAsset scenarioData;
+    [Header("Scenario Data")]
     public int numberOfRounds;
     public List<Crop> availableCrops;
     public List<Quota> quotas;
