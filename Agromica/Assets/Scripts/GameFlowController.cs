@@ -8,6 +8,8 @@ using UnityEngine;
 public class GameFlowController : MonoBehaviour
 {
     [Header("Scenario Data")]
+    public bool loadFromFile;
+    public TextAsset scenarioData;
     public int numberOfRounds;
     public List<Crop> availableCrops;
     public List<Quota> quotas;
@@ -48,9 +50,20 @@ public class GameFlowController : MonoBehaviour
         [System.Serializable]
         public struct Requirement
         {
-            public int cropIndex;
+            public string cropName;
             public int requiredAmount;
         }
+    }
+
+    /// <summary>
+    /// Allows the information contained in a JSON scenario data file to be loaded into the game.
+    /// </summary>
+    [System.Serializable]
+    private class ScenarioDataLoader
+    {
+        public int rounds;
+        public Crop[] crops;
+        public Quota[] quotas;
     }
 
     /////Public Methods
@@ -78,7 +91,7 @@ public class GameFlowController : MonoBehaviour
             Quota currentQuota = turnToQuota[currentTurn];
             foreach (Quota.Requirement req in currentQuota.cropRequirements)
             {
-                string reqCrop = availableCrops[req.cropIndex].cropName;
+                string reqCrop = req.cropName;
                 if (player.cropInventory[reqCrop] >= req.requiredAmount)
                 {
                     player.cropInventory[reqCrop] -= req.requiredAmount;
@@ -122,6 +135,11 @@ public class GameFlowController : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        if (loadFromFile)
+        {
+            LoadScenario();
+        }
+
         player = FindObjectOfType<Player>();
         nameToCrop = new Dictionary<string, Crop>();
         turnToQuota = new Dictionary<int, Quota>();
@@ -142,5 +160,16 @@ public class GameFlowController : MonoBehaviour
 
         //TODO: send crop info to market
         currentTurn = 0;
+    }
+
+    /// <summary>
+    /// Allows the scenario data to be loaded from a text file (in JSON format, matching the structure of the ScenarioDataLoader class).
+    /// </summary>
+    private void LoadScenario()
+    {
+        ScenarioDataLoader loadedData = JsonUtility.FromJson<ScenarioDataLoader>(scenarioData.text);
+        numberOfRounds = loadedData.rounds;
+        availableCrops = new List<Crop>(loadedData.crops);
+        quotas = new List<Quota>(loadedData.quotas);
     }
 }
