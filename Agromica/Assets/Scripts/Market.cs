@@ -156,6 +156,8 @@ public class Market : MonoBehaviour
         return cropToData[cropName].getSellPrice();
     }
 
+    //TODO: use floats for money things maybe
+
     /// <summary>
     /// Buys crops from the market, updating the player's inventory and funds accordingly.
     /// Does nothing if the player cannot afford the purchase.
@@ -164,12 +166,15 @@ public class Market : MonoBehaviour
     /// <param name="amount">The amount of the crop to buy</param>
     public void buyCrop(string cropName, int amount)
     {
-        float purchasePrice = getBuyPrice(cropName) * amount;
+        int purchasePrice = Mathf.CeilToInt(getBuyPrice(cropName)) * amount;
         if (player.currentMoney >= purchasePrice)
         {
-            //TODO: take away money (should probably make player's funds/debt into floats)
+            //take away money
+            player.currentMoney -= purchasePrice;
 
-            //TODO: update player's inventory (add amount of cropname)
+            //update player's inventory (add amount of cropname)
+            player.cropInventory[cropName] += amount;
+            player.updateInventory();
 
             //update market
             cropToData[cropName].cropBuyUpdate(amount);
@@ -186,11 +191,13 @@ public class Market : MonoBehaviour
     {
         if (player.cropInventory[cropName] >= amount)
         {
-            float salePrice = getSellPrice(cropName) * amount;
+            //update player's inventory (remove amount of cropname)
+            player.cropInventory[cropName] -= amount;
+            player.updateInventory();
 
-            //TODO: give money (should probably make player's fund/debt into floats)
-
-            //TODO: update player's inventory (remove amount of cropname)
+            //give money
+            int salePrice = Mathf.CeilToInt(getSellPrice(cropName)) * amount;
+            player.currentMoney += salePrice;
 
             //update market
             cropToData[cropName].cropSellUpdate(amount);
