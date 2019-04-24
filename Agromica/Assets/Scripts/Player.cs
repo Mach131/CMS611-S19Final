@@ -8,8 +8,8 @@ using UnityEngine.UI;
 /// </summary>
 public class Player : MonoBehaviour
 {
-    public int currentMoney;
-    public int currentDebt;
+    public float currentMoney;
+    public float currentDebt;
     public Text inventoryDisplay;
     public Dictionary<string, int> cropInventory = new Dictionary<string, int>();
 
