@@ -16,12 +16,13 @@ public class GameFlowController : MonoBehaviour
     public List<Quota> quotas;
     [Header("Scene References")]
     public Player playerObject;
-    //TODO: market
+
+    public Dictionary<string, Crop> nameToCrop;
+    public Dictionary<int, Quota> turnToQuota;
 
     public int currentTurn;
     private Player player;
-    public Dictionary<string, Crop> nameToCrop;
-    public Dictionary<int, Quota> turnToQuota;
+    private Market market;
 
     /////Helper Classes
 
@@ -135,6 +136,9 @@ public class GameFlowController : MonoBehaviour
                 farm.passTurn();
             }
 
+            //market prices
+            market.passTurn();
+
             currentTurn += 1;
         }
 
@@ -154,6 +158,7 @@ public class GameFlowController : MonoBehaviour
         }
 
         player = FindObjectOfType<Player>();
+        market = FindObjectOfType<Market>();
         nameToCrop = new Dictionary<string, Crop>();
         turnToQuota = new Dictionary<int, Quota>();
 
@@ -170,8 +175,6 @@ public class GameFlowController : MonoBehaviour
             turnToQuota.Add(quota.turnNumber, quota);
         }
         
-
-        //TODO: send crop info to market
         currentTurn = 0;
     }
 
