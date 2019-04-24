@@ -1,9 +1,9 @@
 {
 	"rounds" : 9,
 	"crops" : [
-		{"cropName" : "Red", "turnsToGrow" : 1},
-		{"cropName" : "Yellow", "turnsToGrow" : 2},
-		{"cropName" : "Blue", "turnsToGrow" : 3}
+		{"cropName" : "Red", "turnsToGrow" : 1, "baseSupply" : 100, "baseDemand" : 100},
+		{"cropName" : "Yellow", "turnsToGrow" : 2, "baseSupply" : 100, "baseDemand" : 100},
+		{"cropName" : "Blue", "turnsToGrow" : 3, "baseSupply" : 100, "baseDemand" : 100}
 	],
 	"quotas" : [
 		{"turnNumber" : 3, "cropRequirements" : [
