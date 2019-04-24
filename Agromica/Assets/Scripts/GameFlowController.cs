@@ -18,10 +18,10 @@ public class GameFlowController : MonoBehaviour
     public Player playerObject;
     //TODO: market
 
-    private int currentTurn;
+    public int currentTurn;
     private Player player;
-    private Dictionary<string, Crop> nameToCrop;
-    private Dictionary<int, Quota> turnToQuota;
+    public Dictionary<string, Crop> nameToCrop;
+    public Dictionary<int, Quota> turnToQuota;
 
     /////Helper Classes
 
