@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public class Market : MonoBehaviour
 {
+    public static float buyPriceFactor = 1.1f;
+    public static float supplyResetFactor = 0.2f;
+
     private Dictionary<string, CropMarketData> cropToData;
     private Player player;
 
@@ -17,12 +20,17 @@ public class Market : MonoBehaviour
     private class CropMarketData
     {
         private float baseSupply;
-        private float currentSupply;
         private float baseDemand;
-        private float currentDemand;
+        private float c1;
+        private float c2;
+        private float s;
+        private float d;
+
         private int timesBought;
         private int timesSold;
 
+        private float currentSupply;
+        private float currentDemand;
         private float currentBuyPrice;
         private float currentSellPrice;
 
@@ -33,12 +41,21 @@ public class Market : MonoBehaviour
         /// </summary>
         /// <param name="baseSupply">The base supply for the crop</param>
         /// <param name="baseDemand">The base demand for the crop</param>
-        public CropMarketData(float baseSupply, float baseDemand)
+        /// <param name="c1">The scaling factor for the crop price</param>
+        /// <param name="c2">Offset for supply/demand price factor</param>
+        /// <param name="s">Scaling factor for supply changes</param>
+        /// <param name="d">Scaling factor for demand changes</param>
+        public CropMarketData(float baseSupply, float baseDemand, float c1, float c2, float s, float d)
         {
             this.baseSupply = baseSupply;
             this.currentSupply = baseSupply;
             this.baseDemand = baseDemand;
             this.currentDemand = baseDemand;
+
+            this.c1 = c1;
+            this.c2 = c2;
+            this.s = s;
+            this.d = d;
 
             this.timesBought = 0;
             this.timesSold = 0;
@@ -75,7 +92,7 @@ public class Market : MonoBehaviour
         /// <param name="amount">The amount of the crop that was bought</param>
         public void cropBuyUpdate(int amount)
         {
-            //TODO: implement
+            this.currentDemand += this.d * amount;
 
             timesBought += 1;
         }
@@ -86,7 +103,7 @@ public class Market : MonoBehaviour
         /// <param name="amount">The amount of the crop that was sold</param>
         public void cropSellUpdate(int amount)
         {
-            //TODO: implement
+            this.currentSupply += this.s * amount;
 
             timesSold += 1;
         }
@@ -96,7 +113,7 @@ public class Market : MonoBehaviour
         /// </summary>
         public void marketTurnUpdate()
         {
-            //TODO: other changes to supply/demand
+            this.currentSupply += (this.baseSupply - this.currentSupply) * Market.supplyResetFactor;
 
             updatePrices();
         }
@@ -109,9 +126,9 @@ public class Market : MonoBehaviour
         /// </summary>
         private void updatePrices()
         {
-            //TODO: not constant
-            currentBuyPrice = 100;
-            currentSellPrice = 100;
+            float priceDenominator = Mathf.Max((this.c2 - this.currentDemand + this.currentSupply), 0.001f);
+            currentSellPrice = this.c1 / priceDenominator;
+            currentBuyPrice = currentSellPrice * Market.buyPriceFactor;
         }
     }
 
@@ -201,7 +218,8 @@ public class Market : MonoBehaviour
         cropToData = new Dictionary<string, CropMarketData>();
         foreach (GameFlowController.Crop crop in mainController.availableCrops)
         {
-            CropMarketData cropData = new CropMarketData(crop.baseSupply, crop.baseDemand);
+            CropMarketData cropData = new CropMarketData(crop.baseSupply, crop.baseDemand,
+                crop.mVarC1, crop.mVarC2, crop.mVarS, crop.mVarD);
             cropToData.Add(crop.cropName, cropData);
         }
 
