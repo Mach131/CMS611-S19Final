@@ -92,13 +92,11 @@ public class GameFlowController : MonoBehaviour
             bool failedQuota = false;
 
             Quota currentQuota = turnToQuota[currentTurn];
+            // Checks if the quota can be reached
             foreach (Quota.Requirement req in currentQuota.cropRequirements)
             {
                 string reqCrop = req.cropName;
-                if (player.cropInventory[reqCrop] >= req.requiredAmount)
-                {
-                    player.cropInventory[reqCrop] -= req.requiredAmount;
-                } else
+                if (!(player.cropInventory[reqCrop] >= req.requiredAmount))
                 {
                     failedQuota = true;
                 }
@@ -108,6 +106,14 @@ public class GameFlowController : MonoBehaviour
             {
                 Debug.Log("failed quota");
                 //TODO: failure penalty
+            }
+            else
+            {
+                // Only removes if the quota is reached
+                foreach (Quota.Requirement req in currentQuota.cropRequirements) {
+                    string reqCrop = req.cropName;
+                    player.cropInventory[reqCrop] -= req.requiredAmount;
+                }
             }
         }
 
@@ -129,6 +135,8 @@ public class GameFlowController : MonoBehaviour
 
             currentTurn += 1;
         }
+
+        player.updateInventory();
     }
 
     /////Private Methods
