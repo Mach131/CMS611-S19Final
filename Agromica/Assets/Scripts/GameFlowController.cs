@@ -34,9 +34,14 @@ public class GameFlowController : MonoBehaviour
     {
         public string cropName;
         public int turnsToGrow;
-        //TODO: stuff that the market needs to know (reactivity, starting prices)
+
+        //market variables
         public float baseSupply;
         public float baseDemand;
+        public float mVarC1;
+        public float mVarC2;
+        public float mVarS;
+        public float mVarD;
     }
 
     /// <summary>
