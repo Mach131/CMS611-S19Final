@@ -77,6 +77,7 @@ public class Farm : MonoBehaviour
             if (addPlot()) 
             { 
                 player.currentMoney -= plotPrice;
+                player.updateInventory();
                 // return true;
             }
         }

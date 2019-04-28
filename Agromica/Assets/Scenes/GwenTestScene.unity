@@ -1120,6 +1120,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameFlowController
       objectReference: {fileID: 0}
+    - target: {fileID: 7007298482540127119, guid: 68f3eb9cb442b7e48bedb8228d38d5f5,
+        type: 3}
+      propertyPath: failedQuota
+      value: 
+      objectReference: {fileID: 4787536885789395663, guid: 87c7acf21127a4fccba2ce3c276ea0ad,
+        type: 3}
+    - target: {fileID: 7007298482540127119, guid: 68f3eb9cb442b7e48bedb8228d38d5f5,
+        type: 3}
+      propertyPath: passedQuota
+      value: 
+      objectReference: {fileID: 6467005205402744770, guid: b05f51edf0af644018d45139ec876ce7,
+        type: 3}
+    - target: {fileID: 7007298482540127119, guid: 68f3eb9cb442b7e48bedb8228d38d5f5,
+        type: 3}
+      propertyPath: passedQuotaMessage
+      value: 
+      objectReference: {fileID: 6467005205402744770, guid: b05f51edf0af644018d45139ec876ce7,
+        type: 3}
+    - target: {fileID: 7007298482540127119, guid: 68f3eb9cb442b7e48bedb8228d38d5f5,
+        type: 3}
+      propertyPath: failedQuotaMessage
+      value: 
+      objectReference: {fileID: 4787536885789395663, guid: 87c7acf21127a4fccba2ce3c276ea0ad,
+        type: 3}
     - target: {fileID: 2123185701108365285, guid: 68f3eb9cb442b7e48bedb8228d38d5f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1306,6 +1330,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1654636300809285180, guid: 4d0cde8e06be84a1ca8ad9f654e7423f,
+        type: 3}
+      propertyPath: bankMenuPrefab
+      value: 
+      objectReference: {fileID: 2140867296253263290, guid: aa0e536026e99449ab433ccd6b4613b9,
+        type: 3}
+    - target: {fileID: 1654636300809285180, guid: 4d0cde8e06be84a1ca8ad9f654e7423f,
+        type: 3}
+      propertyPath: bankMenu
+      value: 
+      objectReference: {fileID: 362640653}
     - target: {fileID: 2852246015300432039, guid: 4d0cde8e06be84a1ca8ad9f654e7423f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1336,17 +1371,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1654636300809285180, guid: 4d0cde8e06be84a1ca8ad9f654e7423f,
-        type: 3}
-      propertyPath: bankMenuPrefab
-      value: 
-      objectReference: {fileID: 2140867296253263290, guid: aa0e536026e99449ab433ccd6b4613b9,
-        type: 3}
-    - target: {fileID: 1654636300809285180, guid: 4d0cde8e06be84a1ca8ad9f654e7423f,
-        type: 3}
-      propertyPath: bankMenu
-      value: 
-      objectReference: {fileID: 362640653}
     - target: {fileID: 2484794302164272892, guid: 4d0cde8e06be84a1ca8ad9f654e7423f,
         type: 3}
       propertyPath: m_IsActive
@@ -1365,6 +1389,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Farm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
+        type: 3}
+      propertyPath: initialNumberOfPlots
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
+        type: 3}
+      propertyPath: maxNumberOfPlots
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
+        type: 3}
+      propertyPath: offset
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 9182245735362976604, guid: a995ef4495b960a4eae62b04918b814a,
         type: 3}
@@ -1420,21 +1459,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
-        type: 3}
-      propertyPath: initialNumberOfPlots
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
-        type: 3}
-      propertyPath: maxNumberOfPlots
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
-        type: 3}
-      propertyPath: offset
-      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a995ef4495b960a4eae62b04918b814a, type: 3}

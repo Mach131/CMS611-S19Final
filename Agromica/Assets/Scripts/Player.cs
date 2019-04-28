@@ -17,12 +17,14 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        currentMoney = 0;
         updateInventory();
     }
 
     public void updateInventory()
     {
         inventoryDisplay.text = "";
+        inventoryDisplay.text = "Currency: " + currentMoney + "\n";
         foreach(string cropName in cropInventory.Keys)
         {
             inventoryDisplay.text = inventoryDisplay.text + cropName + 

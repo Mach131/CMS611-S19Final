@@ -33,6 +33,7 @@ public class Bank : MonoBehaviour
         {
             player.currentDebt += amount;
             player.currentMoney += amount;
+            player.updateInventory();
         }
         openMenu();
 
@@ -48,6 +49,7 @@ public class Bank : MonoBehaviour
         {
             player.currentDebt -= amount;
             player.currentMoney -= amount;
+            player.updateInventory();
         }
         openMenu();
     }

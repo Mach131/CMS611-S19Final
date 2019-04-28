@@ -25,6 +25,9 @@ public class GameFlowController : MonoBehaviour
     private Market market;
     private Bank bank;
 
+    public GameObject failedQuotaMessage;
+    public GameObject passedQuotaMessage;
+
     /////Helper Classes
 
     /// <summary>
@@ -114,7 +117,10 @@ public class GameFlowController : MonoBehaviour
             if (failedQuota)
             {
                 Debug.Log("failed quota");
-                //TODO: failure penalty
+                player.currentDebt += 500;
+                player.updateInventory();
+                // TODO: temp penalty for failing quota
+                Instantiate(failedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
             }
             else
             {
@@ -123,6 +129,7 @@ public class GameFlowController : MonoBehaviour
                     string reqCrop = req.cropName;
                     player.cropInventory[reqCrop] -= req.requiredAmount;
                 }
+                Instantiate(passedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
 
@@ -185,6 +192,7 @@ public class GameFlowController : MonoBehaviour
         }
         
         currentTurn = 0;
+
     }
 
     /// <summary>
