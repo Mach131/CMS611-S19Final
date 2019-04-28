@@ -7,27 +7,20 @@ using System;
 public class Bank : MonoBehaviour
 {
 
-    public float interestRate = 10;
+    public float interestRate;
 
     private Player player;
 
     public Canvas bankMenu;
 
     private bool menuOpen = false;
-    // public GameObject bankMenuPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
+        interestRate = .1f;
 
-        // bankMenu = Instantiate(bankMenuPrefab, transform);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void takeLoan()
@@ -85,4 +78,26 @@ public class Bank : MonoBehaviour
         }
         return timeLeft;
     }
+
+    public void CompoundInterest(int turn)
+    {
+        float P = player.currentDebt;
+        float r = interestRate;
+        Debug.Log(r);
+        float n = 12f;
+        float t = turn / n;
+        float bottom = (1 + r / n);
+        Debug.Log(bottom);
+        float exp = P * (float)Math.Pow(bottom,1);
+        Debug.Log(exp);
+        player.currentDebt = exp;
+        UpdateDebtDisplay();
+    }
+
+    public void UpdateDebtDisplay() 
+    {
+        GameObject current = findInputText("CurrentDebt");
+        current.GetComponent<Text>().text = "Current Debt: " + player.currentDebt.ToString();
+    }
+
 }

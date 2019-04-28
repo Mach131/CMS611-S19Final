@@ -23,6 +23,7 @@ public class GameFlowController : MonoBehaviour
     public int currentTurn;
     private Player player;
     private Market market;
+    private Bank bank;
 
     /////Helper Classes
 
@@ -142,12 +143,14 @@ public class GameFlowController : MonoBehaviour
             }
 
             //market prices
-            market.passTurn();
+            // TODO: uncomment when market in.
+            // market.passTurn();
 
             currentTurn += 1;
         }
 
         player.updateInventory();
+        bank.CompoundInterest(currentTurn);
     }
 
     /////Private Methods
@@ -164,6 +167,7 @@ public class GameFlowController : MonoBehaviour
 
         player = FindObjectOfType<Player>();
         market = FindObjectOfType<Market>();
+        bank = FindObjectOfType<Bank>();
         nameToCrop = new Dictionary<string, Crop>();
         turnToQuota = new Dictionary<int, Quota>();
 
