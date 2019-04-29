@@ -46,6 +46,11 @@ public class Plot : MonoBehaviour
             Destroy(plantedSeed.gameObject);
             currentlyAvailable = true;
 
+            Text timeLeft = findPlantText();
+            timeLeft.text = "Empty Plot";
+
+            player.updateInventory();
+
             return true;
         }
 
@@ -76,6 +81,9 @@ public class Plot : MonoBehaviour
             plantedSeed.Initialize(type);
 
             currentlyAvailable = false;
+
+            Text timeLeft = findPlantText();
+            timeLeft.text = plantedSeed.timeLeft().ToString();
         }
     }
 
@@ -105,21 +113,30 @@ public class Plot : MonoBehaviour
         {
 
             int turns = plantedSeed.timeLeft() - 1;
+
             if (turns < 0)
                 turns = 0;
-            Transform[] ts = this.gameObject.GetComponentsInChildren<Transform>();
-            Text timeLeft = null;
-            foreach (Transform child in ts)
-            {
-                if (child.name is "PlantText")
-                    timeLeft = child.gameObject.GetComponent<Text>();
-
-            }
+            Text timeLeft = findPlantText();
             timeLeft.text = turns.ToString();
             if (turns == 0)
                 timeLeft.text = "Harvest";
+
+
             return plantedSeed.passTurn();
         }
         return false;
+    }
+
+    private Text findPlantText()
+    {
+        Transform[] ts = this.gameObject.GetComponentsInChildren<Transform>();
+        Text timeLeft = null;
+        foreach (Transform child in ts)
+        {
+            if (child.name is "PlantText")
+                timeLeft = child.gameObject.GetComponent<Text>();
+
+        }
+        return timeLeft;
     }
 }

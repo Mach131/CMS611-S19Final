@@ -16,12 +16,17 @@ public class GameFlowController : MonoBehaviour
     public List<Quota> quotas;
     [Header("Scene References")]
     public Player playerObject;
-    //TODO: market
 
-    private int currentTurn;
+    public Dictionary<string, Crop> nameToCrop;
+    public Dictionary<int, Quota> turnToQuota;
+
+    public int currentTurn;
     private Player player;
-    private Dictionary<string, Crop> nameToCrop;
-    private Dictionary<int, Quota> turnToQuota;
+    private Market market;
+    private Bank bank;
+
+    public GameObject failedQuotaMessage;
+    public GameObject passedQuotaMessage;
 
     /////Helper Classes
 
@@ -33,7 +38,14 @@ public class GameFlowController : MonoBehaviour
     {
         public string cropName;
         public int turnsToGrow;
-        //TODO: stuff that the market needs to know (reactivity, starting prices)
+
+        //market variables
+        public float baseSupply;
+        public float baseDemand;
+        public float mVarC1;
+        public float mVarC2;
+        public float mVarS;
+        public float mVarD;
     }
 
     /// <summary>
@@ -92,13 +104,11 @@ public class GameFlowController : MonoBehaviour
             bool failedQuota = false;
 
             Quota currentQuota = turnToQuota[currentTurn];
+            // Checks if the quota can be reached
             foreach (Quota.Requirement req in currentQuota.cropRequirements)
             {
                 string reqCrop = req.cropName;
-                if (player.cropInventory[reqCrop] >= req.requiredAmount)
-                {
-                    player.cropInventory[reqCrop] -= req.requiredAmount;
-                } else
+                if (!(player.cropInventory[reqCrop] >= req.requiredAmount))
                 {
                     failedQuota = true;
                 }
@@ -107,7 +117,19 @@ public class GameFlowController : MonoBehaviour
             if (failedQuota)
             {
                 Debug.Log("failed quota");
-                //TODO: failure penalty
+                player.currentDebt += 500;
+                player.updateInventory();
+                // TODO: temp penalty for failing quota
+                Instantiate(failedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+            }
+            else
+            {
+                // Only removes if the quota is reached
+                foreach (Quota.Requirement req in currentQuota.cropRequirements) {
+                    string reqCrop = req.cropName;
+                    player.cropInventory[reqCrop] -= req.requiredAmount;
+                }
+                Instantiate(passedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
 
@@ -126,9 +148,17 @@ public class GameFlowController : MonoBehaviour
             {
                 farm.passTurn();
             }
+            
+            if (market != null)
+            {
+                market.passTurn();
+            }
 
             currentTurn += 1;
         }
+
+        player.updateInventory();
+        bank.CompoundInterest(currentTurn);
     }
 
     /////Private Methods
@@ -144,6 +174,8 @@ public class GameFlowController : MonoBehaviour
         }
 
         player = FindObjectOfType<Player>();
+        market = FindObjectOfType<Market>();
+        bank = FindObjectOfType<Bank>();
         nameToCrop = new Dictionary<string, Crop>();
         turnToQuota = new Dictionary<int, Quota>();
 
@@ -160,9 +192,8 @@ public class GameFlowController : MonoBehaviour
             turnToQuota.Add(quota.turnNumber, quota);
         }
         
-
-        //TODO: send crop info to market
         currentTurn = 0;
+
     }
 
     /// <summary>

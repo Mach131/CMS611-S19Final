@@ -9,14 +9,20 @@ public class Farm : MonoBehaviour
 {
     public int initialNumberOfPlots;
     public int maxNumberOfPlots;
+    public float offset = 0.8f;
     [Header("Reference to plot prefab")]
     public GameObject plotPrefabObject;
 
+    public int plotPrice = 10;
+
     private List<Plot> plots;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
+
         plots = new List<Plot>();
         for (int i = 0; i < initialNumberOfPlots; i ++)
         {
@@ -47,11 +53,34 @@ public class Farm : MonoBehaviour
         int plotIndex = plots.Count;
         if (plotIndex < maxNumberOfPlots)
         {
-            GameObject newPlot = Instantiate(plotPrefabObject, new Vector3(plotIndex * 2, 0), Quaternion.identity, transform);
-            plots.Add(newPlot.GetComponent<Plot>());
+            if (plotIndex < 3)
+            {
+                GameObject newPlot = Instantiate(plotPrefabObject, new Vector3(plotIndex * 2 + offset, -2), Quaternion.identity, transform);
+                plots.Add(newPlot.GetComponent<Plot>());
+            }
+            else
+            {
+                GameObject newPlot = Instantiate(plotPrefabObject, new Vector3(-1 * (plotIndex - 3) * 2 - 2 * offset, -2), Quaternion.identity, transform);
+                plots.Add(newPlot.GetComponent<Plot>());
+            }
 
             return true;
         }
+        // TODO: Make the buy plot button not clickable
         return false;
+    }
+
+    public void buyPlot()
+    {
+        if (player.currentMoney >= plotPrice)
+        {
+            if (addPlot()) 
+            { 
+                player.currentMoney -= plotPrice;
+                player.updateInventory();
+                // return true;
+            }
+        }
+        // return false;
     }
 }
