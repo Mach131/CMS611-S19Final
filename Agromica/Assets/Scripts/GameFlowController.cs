@@ -148,10 +148,11 @@ public class GameFlowController : MonoBehaviour
             {
                 farm.passTurn();
             }
-
-            //market prices
-            // TODO: uncomment when market in.
-            // market.passTurn();
+            
+            if (market != null)
+            {
+                market.passTurn();
+            }
 
             currentTurn += 1;
         }
