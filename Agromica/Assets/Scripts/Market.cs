@@ -180,6 +180,10 @@ public class Market : MonoBehaviour
             //update market
             cropToData[cropName].cropBuyUpdate(amount);
         }
+        else
+        {
+            Debug.Log("not enough money");
+        }
     }
 
     /// <summary>
@@ -202,6 +206,10 @@ public class Market : MonoBehaviour
 
             //update market
             cropToData[cropName].cropSellUpdate(amount);
+        }
+        else
+        {
+            Debug.Log("not enough crop");
         }
     }
 

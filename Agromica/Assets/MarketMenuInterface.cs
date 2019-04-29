@@ -29,8 +29,10 @@ public class MarketMenuInterface : MonoBehaviour
     {
         foreach (string crop in cropList)
         {
-            buyText[crop].text = "Price: " + market.getBuyPrice(crop);
-            sellText[crop].text = "Price: " + market.getSellPrice(crop);
+            //TODO: may change to floats eventually
+
+            buyText[crop].text = "Price: " + Mathf.CeilToInt(market.getBuyPrice(crop));
+            sellText[crop].text = "Price: " + Mathf.CeilToInt(market.getSellPrice(crop));
         }
     }
 
@@ -42,11 +44,19 @@ public class MarketMenuInterface : MonoBehaviour
         buyText = new Dictionary<string, Text>();
         sellText = new Dictionary<string, Text>();
 
-        //search for references to text based on crops
+        //search for references to buttons and text based on crops
         foreach (string crop in cropList)
         {
-            buyText.Add(crop, marketMenu.Find(crop + "Buy").Find("Price").GetComponent<Text>());
-            sellText.Add(crop, marketMenu.Find(crop + "Sell").Find("Price").GetComponent<Text>());
+            Transform buyButton = marketMenu.Find(crop + "Buy");
+            Transform sellButton = marketMenu.Find(crop + "Sell");
+
+            //buttons
+            buyButton.GetComponent<Button>().onClick.AddListener(() => market.buyCrop(crop, 1));
+            sellButton.GetComponent<Button>().onClick.AddListener(() => market.sellCrop(crop, 1));
+
+            //text
+            buyText.Add(crop, buyButton.Find("Price").GetComponent<Text>());
+            sellText.Add(crop, sellButton.Find("Price").GetComponent<Text>());
         }
 
         updatePriceText();
