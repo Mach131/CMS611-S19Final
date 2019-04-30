@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 {
     public float currentMoney;
     public float currentDebt;
-    public Text inventoryDisplay;
+    //public Text inventoryDisplay;
     public Dictionary<string, int> cropInventory = new Dictionary<string, int>();
 
     public List<Text> Inventory;
@@ -23,12 +23,12 @@ public class Player : MonoBehaviour
 
     public void updateInventory()
     {
-        inventoryDisplay.text = "";
+        /*inventoryDisplay.text = "";
         inventoryDisplay.text = "Currency: " + currentMoney + "\n";
         foreach(string cropName in cropInventory.Keys)
         {
             inventoryDisplay.text = inventoryDisplay.text + cropName + 
                         ": " + cropInventory[cropName].ToString() + "\n";
-        }
+        }*/
     }
 }
