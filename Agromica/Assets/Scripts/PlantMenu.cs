@@ -31,6 +31,7 @@ public class PlantMenu : MonoBehaviour
     {
         //hardcoded for testing
         seedButtonsRedBlue[0].onClick.AddListener(() => forPlot.Plant("Red"));
-        seedButtonsRedBlue[1].onClick.AddListener(() => forPlot.Plant("Blue"));
+        seedButtonsRedBlue[1].onClick.AddListener(() => forPlot.Plant("Yellow"));
+        seedButtonsRedBlue[2].onClick.AddListener(() => forPlot.Plant("Blue"));
     }
 }

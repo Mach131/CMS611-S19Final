@@ -19,8 +19,7 @@ public class MarketList : MonoBehaviour
     public Transform contentPanel;
     public SimpleObjectPool objectPool;
 
-    public HashSet<MarketEntry> currentEntries;
-
+    private HashSet<MarketEntry> currentEntries = new HashSet<MarketEntry>();
     private GameFlowController controller;
 
     // Use this for initialization
@@ -28,8 +27,6 @@ public class MarketList : MonoBehaviour
     {
         controller = FindObjectOfType<GameFlowController>();
         cropList = controller.availableCrops;
-
-        currentEntries = new HashSet<MarketEntry>();
 
         RefreshDisplay();
         updatePriceText();
