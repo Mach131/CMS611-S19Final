@@ -4,26 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-[System.Serializable]
+/*[System.Serializable]
 public class Item
 {
     public string itemName;
     public Sprite icon;
     public string buyPrice;
     public string sellPrice;
-}
+}*/
 
 public class MarketList : MonoBehaviour
 {
-
-    public List<Item> itemList;
+    public List<GameFlowController.Crop> cropList;
     public Transform contentPanel;
     public SimpleObjectPool objectPool;
+
+    public HashSet<MarketEntry> currentEntries;
+
+    private GameFlowController controller;
 
     // Use this for initialization
     void Start()
     {
+        controller = FindObjectOfType<GameFlowController>();
+        cropList = controller.availableCrops;
+
+        currentEntries = new HashSet<MarketEntry>();
+
         RefreshDisplay();
+        updatePriceText();
     }
 
     void RefreshDisplay()
@@ -33,28 +42,42 @@ public class MarketList : MonoBehaviour
         AddEntries();
     }
 
+    /// <summary>
+    /// Updates the prices shown by all currently active market entries
+    /// </summary>
+    public void updatePriceText()
+    {
+        foreach (MarketEntry entry in currentEntries)
+        {
+            entry.updatePrices();
+        }
+    }
+
     private void RemoveEntries()
     {
         while (contentPanel.childCount > 0)
         {
             GameObject toRemove = transform.GetChild(0).gameObject;
+            currentEntries.Remove(toRemove.GetComponent<MarketEntry>());
             objectPool.ReturnObject(toRemove);
         }
     }
 
     private void AddEntries()
     {
-        for (int i = 0; i < itemList.Count; i++)
+        for (int i = 0; i < cropList.Count; i++)
         {
-            Item item = itemList[i];
+            GameFlowController.Crop crop = cropList[i];
             GameObject obj = objectPool.GetObject();
             obj.transform.SetParent(contentPanel, false);
 
             MarketEntry entry = obj.GetComponent<MarketEntry>();
-            entry.Setup(item, this);
+            entry.Setup(crop);
+            currentEntries.Add(entry);
         }
     }
 
+    /*
     private void AddItem(Item itemToAdd, MarketList market)
     {
         market.itemList.Add(itemToAdd);
@@ -69,5 +92,5 @@ public class MarketList : MonoBehaviour
                 market.itemList.RemoveAt(i);
             }
         }
-    }
+    }*/
 }

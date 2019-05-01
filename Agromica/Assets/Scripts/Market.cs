@@ -10,10 +10,10 @@ public class Market : MonoBehaviour
 {
     public static float buyPriceFactor = 1.1f;
     public static float supplyResetFactor = 0.2f;
+    public MarketList marketMenuList;
 
     private Dictionary<string, CropMarketData> cropToData;
     private Player player;
-    private MarketMenuInterface menuInterface;
 
     /// <summary>
     /// Contains relevant market information for a single crop, and provides ways to update it
@@ -222,7 +222,7 @@ public class Market : MonoBehaviour
         {
             cropData.marketTurnUpdate();
         }
-        menuInterface.updatePriceText();
+        marketMenuList.updatePriceText();
     }
 
 
@@ -231,8 +231,6 @@ public class Market : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menuInterface = GetComponent<MarketMenuInterface>();
-
         GameFlowController mainController = FindObjectOfType<GameFlowController>();
         cropToData = new Dictionary<string, CropMarketData>();
         foreach (GameFlowController.Crop crop in mainController.availableCrops)

@@ -11,28 +11,31 @@ public class MarketEntry : MonoBehaviour
     public TextMeshProUGUI buyPrice;
     public TextMeshProUGUI sellPrice;
 
-    private Item item;
-    private MarketList market;    
+    private GameFlowController.Crop crop;
+    private Market market;
     
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public void Setup(Item currentItem, MarketList currentMarket)
+    public void Setup(GameFlowController.Crop currentCrop)
     {
-        item = currentItem;
-        buyPrice.text = item.buyPrice.ToString();
-        sellPrice.text = item.sellPrice.ToString();
+        crop = currentCrop;
+        market = FindObjectOfType<Market>();
+    }
 
-        market = currentMarket;
+    public void updatePrices()
+    {
+        //TODO: maybe not integers later
+
+        buyPrice.text = Mathf.FloorToInt(market.getBuyPrice(crop.cropName)).ToString();
+        sellPrice.text = Mathf.FloorToInt(market.getSellPrice(crop.cropName)).ToString();
     }
 
     // public void Buy(Player player, Item item)
