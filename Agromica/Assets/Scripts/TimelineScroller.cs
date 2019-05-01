@@ -4,30 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-[System.Serializable]
-public class Turn
+public class TimelineScroller : MonoBehaviour
 {
-    public string number;
-    public bool hasQuota;
-    public string count1;
-    public string count2;
-    public string count3;
-}
-public class Timeline : MonoBehaviour
-{
-    public List<Turn> turnList;
     public Transform contentPanel;
     public SimpleObjectPool objectPool;
+
+    private GameFlowController controller;
 
     // Use this for initialization
     void Start()
     {
+        controller = FindObjectOfType<GameFlowController>();
         RefreshDisplay();
     }
 
     void RefreshDisplay()
     {
-        // myGoldDisplay.text = "Gold: " + gold.ToString();
         RemoveEntries();
         AddEntries();
     }
@@ -43,30 +35,17 @@ public class Timeline : MonoBehaviour
 
     private void AddEntries()
     {
-        for (int i = 0; i < turnList.Count; i++)
+        for (int i = 0; i < (controller.numberOfRounds + 1); i++)
         {
-            Turn turn = turnList[i];
+            int turnNumber = i;
+            GameFlowController.Quota quota = null;
+            controller.turnToQuota.TryGetValue(turnNumber, out quota);
+
             GameObject obj = objectPool.GetObject();
             obj.transform.SetParent(contentPanel, false);
 
             TimelineEntry entry = obj.GetComponent<TimelineEntry>();
-            entry.Setup(turn, this);
-        }
-    }
-
-    private void AddTurn(Turn turnToAdd, Timeline timeline)
-    {
-        timeline.turnList.Add(turnToAdd);
-    }
-
-    private void RemoveTurn(Turn turnToRemove, Timeline timeline)
-    {
-        for (int i = timeline.turnList.Count - 1; i >= 0; i--)
-        {
-            if (timeline.turnList[i] == turnToRemove)
-            {
-                timeline.turnList.RemoveAt(i);
-            }
+            entry.Setup(turnNumber, quota, this);
         }
     }
 }

@@ -4,15 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/*[System.Serializable]
-public class Item
-{
-    public string itemName;
-    public Sprite icon;
-    public string buyPrice;
-    public string sellPrice;
-}*/
-
 public class MarketList : MonoBehaviour
 {
     public List<GameFlowController.Crop> cropList;
@@ -34,7 +25,6 @@ public class MarketList : MonoBehaviour
 
     void RefreshDisplay()
     {
-        // myGoldDisplay.text = "Gold: " + gold.ToString();
         RemoveEntries();
         AddEntries();
     }
@@ -73,21 +63,4 @@ public class MarketList : MonoBehaviour
             currentEntries.Add(entry);
         }
     }
-
-    /*
-    private void AddItem(Item itemToAdd, MarketList market)
-    {
-        market.itemList.Add(itemToAdd);
-    }
-
-    private void RemoveItem(Item itemToRemove, MarketList market)
-    {
-        for (int i = market.itemList.Count - 1; i >= 0; i--)
-        {
-            if (market.itemList[i] == itemToRemove)
-            {
-                market.itemList.RemoveAt(i);
-            }
-        }
-    }*/
 }
