@@ -28,14 +28,17 @@ public class MarketEntry : MonoBehaviour
     {
         crop = currentCrop;
         market = FindObjectOfType<Market>();
+
+        buyButton.onClick.AddListener(() => market.buyCrop(crop.cropName, 1));
+        sellButton.onClick.AddListener(() => market.sellCrop(crop.cropName, 1));
     }
 
     public void updatePrices()
     {
         //TODO: maybe not integers later
 
-        buyPrice.text = Mathf.FloorToInt(market.getBuyPrice(crop.cropName)).ToString();
-        sellPrice.text = Mathf.FloorToInt(market.getSellPrice(crop.cropName)).ToString();
+        buyPrice.text = Mathf.CeilToInt(market.getBuyPrice(crop.cropName)).ToString();
+        sellPrice.text = Mathf.CeilToInt(market.getSellPrice(crop.cropName)).ToString();
     }
 
     // public void Buy(Player player, Item item)
