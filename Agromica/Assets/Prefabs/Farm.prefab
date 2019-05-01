@@ -45,5 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialNumberOfPlots: 1
   maxNumberOfPlots: 3
+  offset: 2
   plotPrefabObject: {fileID: 548207838297635281, guid: 7c6b038d8b73bba45829c4ef53ccff65,
     type: 3}
+  plotPrice: 50

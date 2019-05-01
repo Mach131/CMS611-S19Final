@@ -1,28 +1,37 @@
 {
-	"rounds" : 9,
+	"rounds" : 15,
 	"crops" : [
 		{"cropName" : "Red", "turnsToGrow" : 1, "iconResourcePath" : "Sprites/sugarcaneIcon",
-			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 50, "mVarC2" : 50, "mVarS" : 1, "mVarD" : 1
+			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 3000, "mVarC2" : 250, "mVarS" : 1, "mVarD" : 1
 		},
 		{"cropName" : "Yellow", "turnsToGrow" : 2, "iconResourcePath" : "Sprites/wheatIcon",
-			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 50, "mVarC2" : 50, "mVarS" : 1, "mVarD" : 1
+			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 3000, "mVarC2" : 120, "mVarS" : 1, "mVarD" : 1
 		},
 		{"cropName" : "Blue", "turnsToGrow" : 3, "iconResourcePath" : "Sprites/taroIcon",
-			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 50, "mVarC2" : 50, "mVarS" : 1, "mVarD" : 1
+			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 3000, "mVarC2" : 75, "mVarS" : 1, "mVarD" : 1
 		}
 	],
 	"quotas" : [
 		{"turnNumber" : 3, "cropRequirements" : [
 			{"cropName" : "Red", "requiredAmount" : 2},
-			{"cropName" : "Blue", "requiredAmount" : 1}
+			{"cropName" : "Yellow", "requiredAmount" : 1},
+			{"cropName" : "Blue", "requiredAmount" : 3}
 		]},
 		{"turnNumber" : 6, "cropRequirements" : [
 			{"cropName" : "Red", "requiredAmount" : 1},
-			{"cropName" : "Yellow", "requiredAmount" : 2}
+			{"cropName" : "Yellow", "requiredAmount" : 1}
 		]},
 		{"turnNumber" : 9, "cropRequirements" : [
+			{"cropName" : "Yellow", "requiredAmount" : 3},
+			{"cropName" : "Blue", "requiredAmount" : 1}
+		]},
+		{"turnNumber" : 12, "cropRequirements" : [
 			{"cropName" : "Red", "requiredAmount" : 3},
-			{"cropName" : "Yellow", "requiredAmount" : 4},
+			{"cropName" : "Yellow", "requiredAmount" : 2}
+		]},
+		{"turnNumber" : 15, "cropRequirements" : [
+			{"cropName" : "Red", "requiredAmount" : 2},
+			{"cropName" : "Yellow", "requiredAmount" : 3},
 			{"cropName" : "Blue", "requiredAmount" : 2}
 		]}
 	]
