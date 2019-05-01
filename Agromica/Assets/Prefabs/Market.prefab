@@ -43,3 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d5cc6a20ed43634d83be1ef3ada3e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marketMenuList: {fileID: 0}

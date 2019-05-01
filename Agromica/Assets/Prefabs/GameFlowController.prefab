@@ -49,10 +49,31 @@ MonoBehaviour:
   availableCrops:
   - cropName: Red
     turnsToGrow: 1
+    iconResourcePath: 
+    baseSupply: 0
+    baseDemand: 0
+    mVarC1: 0
+    mVarC2: 0
+    mVarS: 0
+    mVarD: 0
   - cropName: Yellow
     turnsToGrow: 2
+    iconResourcePath: 
+    baseSupply: 0
+    baseDemand: 0
+    mVarC1: 0
+    mVarC2: 0
+    mVarS: 0
+    mVarD: 0
   - cropName: Blue
     turnsToGrow: 3
+    iconResourcePath: 
+    baseSupply: 0
+    baseDemand: 0
+    mVarC1: 0
+    mVarC2: 0
+    mVarS: 0
+    mVarD: 0
   quotas:
   - turnNumber: 3
     cropRequirements:
@@ -75,3 +96,8 @@ MonoBehaviour:
     - cropName: Blue
       requiredAmount: 2
   playerObject: {fileID: 0}
+  currentTurn: 0
+  failedQuotaMessage: {fileID: 4787536885789395663, guid: 87c7acf21127a4fccba2ce3c276ea0ad,
+    type: 3}
+  passedQuotaMessage: {fileID: 6467005205402744770, guid: b05f51edf0af644018d45139ec876ce7,
+    type: 3}

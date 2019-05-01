@@ -45,5 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMoney: 0
   currentDebt: 0
-  inventoryDisplay: {fileID: 0}
   Inventory: []
