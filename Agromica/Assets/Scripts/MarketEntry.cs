@@ -6,6 +6,7 @@ using TMPro;
 
 public class MarketEntry : MonoBehaviour
 {
+    public Image icon;
     public Button buyButton;
     public Button sellButton;
     public TextMeshProUGUI buyPrice;
@@ -31,6 +32,8 @@ public class MarketEntry : MonoBehaviour
 
         buyButton.onClick.AddListener(() => market.buyCrop(crop.cropName, 1));
         sellButton.onClick.AddListener(() => market.sellCrop(crop.cropName, 1));
+
+        icon.sprite = Resources.Load<Sprite>(crop.iconResourcePath);
     }
 
     public void updatePrices()

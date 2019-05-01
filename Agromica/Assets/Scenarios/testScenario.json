@@ -1,13 +1,13 @@
 {
 	"rounds" : 9,
 	"crops" : [
-		{"cropName" : "Red", "turnsToGrow" : 1,
+		{"cropName" : "Red", "turnsToGrow" : 1, "iconResourcePath" : "Sprites/sugarcaneIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 50, "mVarC2" : 50, "mVarS" : 1, "mVarD" : 1
 		},
-		{"cropName" : "Yellow", "turnsToGrow" : 2,
+		{"cropName" : "Yellow", "turnsToGrow" : 2, "iconResourcePath" : "Sprites/wheatIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 50, "mVarC2" : 50, "mVarS" : 1, "mVarD" : 1
 		},
-		{"cropName" : "Blue", "turnsToGrow" : 3,
+		{"cropName" : "Blue", "turnsToGrow" : 3, "iconResourcePath" : "Sprites/taroIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 50, "mVarC2" : 50, "mVarS" : 1, "mVarD" : 1
 		}
 	],

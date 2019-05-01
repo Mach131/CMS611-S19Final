@@ -816,8 +816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc0ffdf5e1e85644958502d122b0991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 5832616503445961047}
   buyButton: {fileID: 5832616502960358510}
   sellButton: {fileID: 5832616503351103252}
-  icon: {fileID: 5832616503445961047}
   buyPrice: {fileID: 5832616502911368534}
   sellPrice: {fileID: 5832616503114667549}
