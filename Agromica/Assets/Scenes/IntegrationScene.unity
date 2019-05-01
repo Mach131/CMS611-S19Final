@@ -1564,17 +1564,17 @@ PrefabInstance:
     - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
         type: 3}
       propertyPath: maxNumberOfPlots
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1379873715935097750, guid: a995ef4495b960a4eae62b04918b814a,
         type: 3}
       propertyPath: offset
-      value: 0.8
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9182245735362976604, guid: a995ef4495b960a4eae62b04918b814a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 9182245735362976604, guid: a995ef4495b960a4eae62b04918b814a,
         type: 3}

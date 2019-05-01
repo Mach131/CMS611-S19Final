@@ -9,7 +9,7 @@ public class Farm : MonoBehaviour
 {
     public int initialNumberOfPlots;
     public int maxNumberOfPlots;
-    public float offset = 0.8f;
+    public float offset = 2.0f;
     [Header("Reference to plot prefab")]
     public GameObject plotPrefabObject;
 
@@ -55,12 +55,12 @@ public class Farm : MonoBehaviour
         {
             if (plotIndex < 3)
             {
-                GameObject newPlot = Instantiate(plotPrefabObject, new Vector3(plotIndex * 2 + offset, -2), Quaternion.identity, transform);
+                GameObject newPlot = Instantiate(plotPrefabObject, new Vector3((plotIndex-3) * 2 - offset, 1), Quaternion.identity, transform);
                 plots.Add(newPlot.GetComponent<Plot>());
             }
             else
             {
-                GameObject newPlot = Instantiate(plotPrefabObject, new Vector3(-1 * (plotIndex - 3) * 2 - 2 * offset, -2), Quaternion.identity, transform);
+                GameObject newPlot = Instantiate(plotPrefabObject, new Vector3((plotIndex - 6) * 2 - offset, -1), Quaternion.identity, transform);
                 plots.Add(newPlot.GetComponent<Plot>());
             }
 
