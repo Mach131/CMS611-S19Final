@@ -86,11 +86,11 @@ public class Bank : MonoBehaviour
         float P = player.currentDebt;
         float r = interestRate;
         Debug.Log(r);
-        float n = 12f;
+        float n = 1f; //Was 12
         float t = turn / n;
         float bottom = (1 + r / n);
         Debug.Log(bottom);
-        float exp = P * (float)Math.Pow(bottom,1);
+        float exp = Mathf.Round(P * (float)Math.Pow(bottom,1));
         Debug.Log(exp);
         player.currentDebt = exp;
         UpdateDebtDisplay();
