@@ -6,26 +6,25 @@ using System;
 
 public class Bank : MonoBehaviour
 {
-
     public float interestRate;
-
     private Player player;
-
-    public Canvas bankMenu;
-
-    private bool menuOpen = false;
+    public Image bankPanel;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
         interestRate = .1f;
+    }
 
+    void OnEnable()
+    {
+        UpdateDebtDisplay();
     }
 
     public void takeLoan()
     {
-        GameObject loanInput = findInputText("LoanInput");
+        GameObject loanInput = findInputText("Loan Input");
         Debug.Log(loanInput.GetComponent<Text>().text);
         string input = loanInput.GetComponent<Text>().text;
         int amount = Int32.Parse(input);
@@ -35,13 +34,12 @@ public class Bank : MonoBehaviour
             player.currentMoney += amount;
             player.updateInventory();
         }
-        openMenu();
-
+        bankPanel.gameObject.SetActive(false);
     }
 
     public void payLoan()
     {
-        GameObject paymentInput = findInputText("PaymentInput");
+        GameObject paymentInput = findInputText("Pay Input");
         Debug.Log(paymentInput.GetComponent<Text>().text);
         string input = paymentInput.GetComponent<Text>().text;
         int amount = Int32.Parse(input);
@@ -51,16 +49,7 @@ public class Bank : MonoBehaviour
             player.currentMoney -= amount;
             player.updateInventory();
         }
-        openMenu();
-    }
-
-    public void openMenu()
-    {
-        menuOpen = !menuOpen;
-        GameObject current = findInputText("CurrentDebt");
-        current.GetComponent<Text>().text = "Current Debt: " + player.currentDebt.ToString();
-        bankMenu.gameObject.SetActive(menuOpen);
-        // bankMenu.renderMode = RenderMode.ScreenSpaceOverlay;
+        bankPanel.gameObject.SetActive(false);
     }
 
     private GameObject findInputText(string textName)
@@ -69,14 +58,13 @@ public class Bank : MonoBehaviour
         // CurrentDebt is the text field for current debt. 
         // LoanInput is the text field for taking a loan
         // PaymentInput is the text field for paying a loan
-        Transform[] ts = bankMenu.gameObject.GetComponentsInChildren<Transform>();
+        Transform[] ts = bankPanel.gameObject.GetComponentsInChildren<Transform>();
         GameObject timeLeft = null;
         foreach (Transform child in ts)
         {
             // Debug.Log(child.name);
             if (child.name.Equals(textName))
                 timeLeft = child.gameObject;
-
         }
         return timeLeft;
     }
@@ -98,7 +86,7 @@ public class Bank : MonoBehaviour
 
     public void UpdateDebtDisplay() 
     {
-        GameObject current = findInputText("CurrentDebt");
+        GameObject current = findInputText("Current Debt");
         current.GetComponent<Text>().text = "Current Debt: " + player.currentDebt.ToString();
     }
 
