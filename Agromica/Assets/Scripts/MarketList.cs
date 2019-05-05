@@ -6,7 +6,6 @@ using TMPro;
 
 public class MarketList : MonoBehaviour
 {
-    public List<GameFlowController.Crop> cropList;
     public Transform contentPanel;
     public SimpleObjectPool objectPool;
 
@@ -17,9 +16,11 @@ public class MarketList : MonoBehaviour
     void Start()
     {
         controller = FindObjectOfType<GameFlowController>();
-        cropList = controller.availableCrops;
-
         RefreshDisplay();
+    }
+
+    void OnEnable()
+    {
         updatePriceText();
     }
 
@@ -52,9 +53,9 @@ public class MarketList : MonoBehaviour
 
     private void AddEntries()
     {
-        for (int i = 0; i < cropList.Count; i++)
+        for (int i = 0; i < controller.availableCrops.Count; i++)
         {
-            GameFlowController.Crop crop = cropList[i];
+            GameFlowController.Crop crop = controller.availableCrops[i];
             GameObject obj = objectPool.GetObject();
             obj.transform.SetParent(contentPanel, false);
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Represents the market, tracking the current prices of crops and the variables influencing them.
@@ -10,7 +11,8 @@ public class Market : MonoBehaviour
 {
     public static float buyPriceFactor = 1.1f;
     public static float supplyResetFactor = 0.2f;
-    public MarketList marketMenuList;
+    public Image marketPanel;
+    private MarketList marketMenuList;
 
     private Dictionary<string, CropMarketData> cropToData;
     private Player player;
@@ -241,5 +243,6 @@ public class Market : MonoBehaviour
         }
 
         player = FindObjectOfType<Player>();
+        marketMenuList = marketPanel.gameObject.GetComponent<MarketList>();
     }
 }

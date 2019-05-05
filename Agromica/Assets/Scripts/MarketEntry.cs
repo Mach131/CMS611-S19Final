@@ -39,22 +39,4 @@ public class MarketEntry : MonoBehaviour
         buyPrice.text = Mathf.CeilToInt(market.getBuyPrice(crop.cropName)).ToString();
         sellPrice.text = Mathf.CeilToInt(market.getSellPrice(crop.cropName)).ToString();
     }
-
-    // public void Buy(Player player, Item item)
-    // {
-    //     // If player has money, subtract funds and add Item to their inventory.
-    //     if (player.currentMoney >= item.buyPrice) {
-    //         player.currentMoney -= item.buyPrice;
-    //         player.cropInventory.AddorUpdate(item.id, 1, (id, count) => count + 1);
-    //     }
-    // }
-
-    // public void Sell(Player player, Item item)
-    // {
-    //     // Subtract item (if it exists) from player inventory and add money.
-    //     if (player.cropInventory.TryGetValue(item.id) > 0) {
-    //         player.currentMoney += item.sellPrice;
-    //         player.cropInventory.AddorUpdate(id, 0, (id, count) => count - 1);
-    //     }
-    // }
 }

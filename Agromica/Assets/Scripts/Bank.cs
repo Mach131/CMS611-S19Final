@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
+using System.Globalization;
 
 public class Bank : MonoBehaviour
 {
     public float interestRate;
-    private Player player;
     public Image bankPanel;
+    public Text loanInput;
+    public Text payInput;
+    public TextMeshProUGUI currentDebt;
+    private Player player;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = FindObjectOfType<Player>();
         interestRate = .1f;
@@ -24,32 +28,39 @@ public class Bank : MonoBehaviour
 
     public void takeLoan()
     {
-        GameObject loanInput = findInputText("Loan Input");
-        Debug.Log(loanInput.GetComponent<Text>().text);
-        string input = loanInput.GetComponent<Text>().text;
-        int amount = Int32.Parse(input);
-        if (amount < 10000 && amount > 0)
-        {
-            player.currentDebt += amount;
-            player.currentMoney += amount;
-            player.updateInventory();
-        }
-        bankPanel.gameObject.SetActive(false);
+        string input = loanInput.text;
+        int amount = 0;
+        if (int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out amount)) {
+            amount = int.Parse(input);
+            if (amount < 10000 && amount > 0)
+            {
+                player.currentDebt += amount;
+                player.currentMoney += amount;
+                player.updateInventory();
+                UpdateDebtDisplay();
+            }
+        } else {
+            Debug.Log("Cannot parse integer: " + input);
+        }   
     }
 
     public void payLoan()
     {
-        GameObject paymentInput = findInputText("Pay Input");
-        Debug.Log(paymentInput.GetComponent<Text>().text);
-        string input = paymentInput.GetComponent<Text>().text;
-        int amount = Int32.Parse(input);
-        if (amount < 10000 && amount > 0 && amount <= player.currentMoney && amount <= player.currentDebt)
+        string input = payInput.text;
+        int amount = 0;
+        if (int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out amount))
         {
-            player.currentDebt -= amount;
-            player.currentMoney -= amount;
-            player.updateInventory();
+            amount = int.Parse(input);
+            if (amount < 10000 && amount > 0 && amount <= player.currentMoney && amount <= player.currentDebt)
+            {
+                player.currentDebt -= amount;
+                player.currentMoney -= amount;
+                player.updateInventory();
+                UpdateDebtDisplay();
+            }
+        } else {
+            Debug.Log("Cannot parse integer: " + input);
         }
-        bankPanel.gameObject.SetActive(false);
     }
 
     private GameObject findInputText(string textName)
@@ -86,8 +97,6 @@ public class Bank : MonoBehaviour
 
     public void UpdateDebtDisplay() 
     {
-        GameObject current = findInputText("Current Debt");
-        current.GetComponent<Text>().text = "Current Debt: " + player.currentDebt.ToString();
+        currentDebt.text = "Current Debt: " + player.currentDebt.ToString();
     }
-
 }
