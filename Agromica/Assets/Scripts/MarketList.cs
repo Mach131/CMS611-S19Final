@@ -17,6 +17,7 @@ public class MarketList : MonoBehaviour
     {
         controller = FindObjectOfType<GameFlowController>();
         RefreshDisplay();
+        updatePriceText();
     }
 
     void OnEnable()
