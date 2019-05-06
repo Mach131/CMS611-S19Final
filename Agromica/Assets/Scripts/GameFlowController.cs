@@ -28,6 +28,8 @@ public class GameFlowController : MonoBehaviour
     public GameObject failedQuotaMessage;
     public GameObject passedQuotaMessage;
 
+    public Plot lastPlotToClick;
+
     /////Helper Classes
 
     /// <summary>
@@ -146,10 +148,10 @@ public class GameFlowController : MonoBehaviour
         {
 
             //growing
-            Farm[] farms = FindObjectsOfType<Farm>();
-            foreach (Farm farm in farms)
+            Plot[] plots = FindObjectsOfType<Plot>();
+            foreach (Plot plt in plots)
             {
-                farm.passTurn();
+                plt.passTurn();
             }
             
             if (market != null)

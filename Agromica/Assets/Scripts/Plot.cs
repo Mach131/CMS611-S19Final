@@ -8,22 +8,30 @@ using UnityEngine.UI;
 /// </summary>
 public class Plot : MonoBehaviour
 {
-    public bool currentlyAvailable;
     public Seed plantedSeed;
     public GameObject plotMenu;
+    public GameObject buyMenu;
     [Header("Reference to prefabs")]
     public GameObject seedPrefabObject;
-    public GameObject plantMenuPrefab;
+    //public GameObject plantMenuPrefab;
+    public int plotPrice = 10;
+
+    GameFlowController controller;
 
     private Player player;
+
+    public bool unlocked = false;
+    public int state = 0;
+    // State 0 is empty, 1 is planted, 2 is ready to harvest. 
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
-        currentlyAvailable = true;
 
-        plotMenu = Instantiate(plantMenuPrefab, transform);
+        controller = FindObjectOfType<GameFlowController>();
+
+        //plotMenu = Instantiate(plantMenuPrefab, transform);
     }
 
     /////Public UI functions
@@ -38,16 +46,17 @@ public class Plot : MonoBehaviour
         // Should be an onClick function
         // Needs to be related to self
 
-        if (!currentlyAvailable && plantedSeed.isDoneGrowing())
+        if (state == 2 && plantedSeed.isDoneGrowing())
         {
-            player.cropInventory[plantedSeed.cropType] += 1;
+            player.cropInventory[plantedSeed.cropType] += plantedSeed.harvestAmount;
             Debug.Log(plantedSeed.cropType + ": " + player.cropInventory[plantedSeed.cropType]);
 
             Destroy(plantedSeed.gameObject);
-            currentlyAvailable = true;
 
             Text timeLeft = findPlantText();
             timeLeft.text = "Empty Plot";
+            //Changes the state holder to empty
+            state = 0;
 
             player.updateInventory();
 
@@ -71,19 +80,22 @@ public class Plot : MonoBehaviour
     /// <param name="type">The name of the crop to plant here; must be listed in GameFlowController's available crops</param>
     public void Plant(string type)
     {
-        if (currentlyAvailable)
+        if (unlocked) 
         {
-            this.plotMenu.SetActive(false);
+            if (state == 0)
+            {
+                this.plotMenu.SetActive(false);
 
-            //make seed, initialize with given type
-            GameObject newPlant = Instantiate(seedPrefabObject, transform);
-            plantedSeed = newPlant.GetComponent<Seed>();
-            plantedSeed.Initialize(type);
+                //make seed, initialize with given type
+                GameObject newPlant = Instantiate(seedPrefabObject, transform);
+                plantedSeed = newPlant.GetComponent<Seed>();
+                plantedSeed.Initialize(type);
 
-            currentlyAvailable = false;
-
-            Text timeLeft = findPlantText();
-            timeLeft.text = plantedSeed.timeLeft().ToString();
+                Text timeLeft = findPlantText();
+                timeLeft.text = plantedSeed.timeLeft().ToString();
+                //Changes state to planted
+                state = 1;
+            }
         }
     }
 
@@ -92,11 +104,39 @@ public class Plot : MonoBehaviour
     /// </summary>
     public void PlotMenu()
     {
-        if (currentlyAvailable) 
+        if (state == 0 && unlocked) 
         {
             this.plotMenu.SetActive(true);
-            this.plotMenu.GetComponent<PlantMenu>().Initialize(this);
-            // Change text to Open Plot
+
+            //Debug.Log(plotMenu.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).childCount);
+            //Debug.Log(plotMenu.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject);
+            //Component[] coms = plotMenu.gameObject.GetComponentsInChildren<Button>();
+            //Debug.Log("coms?");
+            //Debug.Log(coms.Length);
+
+
+            Button[] buttons = plotMenu.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponents<Button>();
+            Debug.Log(buttons.Length);
+            foreach (Button b in buttons)
+            {
+                Debug.Log(b);
+            }
+        }
+    }
+
+    public void BuyMenu()
+    {
+        if (!unlocked)
+        {
+            this.buyMenu.SetActive(true);
+            Button[] buttons = buyMenu.GetComponentsInChildren<Button>();
+            Button yes = null;
+            foreach (Button b in buttons)
+            {
+                if (b.name == "Yes Button")
+                    yes = b;
+            }
+            yes.onClick.AddListener(this.buyPlot);
         }
     }
 
@@ -109,7 +149,7 @@ public class Plot : MonoBehaviour
     /// <returns>True if the seed is done growing, false otherwise</returns>
     public bool passTurn()
     {
-        if (!currentlyAvailable)
+        if (state == 1)
         {
 
             int turns = plantedSeed.timeLeft() - 1;
@@ -118,8 +158,12 @@ public class Plot : MonoBehaviour
                 turns = 0;
             Text timeLeft = findPlantText();
             timeLeft.text = turns.ToString();
-            if (turns == 0)
+            if (turns == 0) 
+            { 
                 timeLeft.text = "Harvest";
+                //state turned to ready
+                state = 2;
+            }
 
 
             return plantedSeed.passTurn();
@@ -138,5 +182,30 @@ public class Plot : MonoBehaviour
 
         }
         return timeLeft;
+    }
+
+    public void onClick()
+    {
+        controller.lastPlotToClick = this;
+        if (!unlocked)
+            BuyMenu();
+        else if (state == 0)
+            PlotMenu();
+        else
+            attemptHarvest();
+    }
+
+    public void buyPlot()
+    {
+        int amount = plotPrice;
+        if (!unlocked && player.currentMoney >= amount)
+        {
+            this.buyMenu.SetActive(false);
+            player.currentMoney -= amount;
+            unlocked = true;
+            Text timeLeft = findPlantText();
+            timeLeft.text = "Empty";
+
+        }
     }
 }
