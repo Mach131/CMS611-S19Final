@@ -243,6 +243,6 @@ public class Market : MonoBehaviour
         }
 
         player = FindObjectOfType<Player>();
-        marketMenuList = marketPanel.gameObject.GetComponent<MarketList>();
+        marketMenuList = marketPanel.gameObject.GetComponentInChildren<MarketList>();
     }
 }

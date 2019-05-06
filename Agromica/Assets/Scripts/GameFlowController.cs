@@ -165,11 +165,11 @@ public class GameFlowController : MonoBehaviour
     }
 
     /////Private Methods
-
+    
     /// <summary>
-    /// Initialize the scenario
+    /// Initializes references; prevents missing references from inactive UI elements
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         if (loadFromFile)
         {
@@ -179,6 +179,13 @@ public class GameFlowController : MonoBehaviour
         player = FindObjectOfType<Player>();
         market = FindObjectOfType<Market>();
         bank = FindObjectOfType<Bank>();
+    }
+
+    /// <summary>
+    /// Initialize the scenario
+    /// </summary>
+    private void Start()
+    {
         nameToCrop = new Dictionary<string, Crop>();
         turnToQuota = new Dictionary<int, Quota>();
 

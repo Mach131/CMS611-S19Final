@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2260ebfe7168a42992a2a4c40b0e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialNumberOfPlots: 1
-  maxNumberOfPlots: 3
-  offset: 2
+  initialNumberOfPlots: 2
+  maxNumberOfPlots: 6
+  offset: -1
   plotPrefabObject: {fileID: 548207838297635281, guid: 7c6b038d8b73bba45829c4ef53ccff65,
     type: 3}
   plotPrice: 50
