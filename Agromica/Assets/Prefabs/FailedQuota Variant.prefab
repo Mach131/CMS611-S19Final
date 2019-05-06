@@ -122,11 +122,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6028544829641992378, guid: b05f51edf0af644018d45139ec876ce7,
-        type: 3}
-      propertyPath: m_Text
-      value: Unfortunatly, you failed your quota. The penalty has been applied.
-      objectReference: {fileID: 0}
     - target: {fileID: 6691208686691307712, guid: b05f51edf0af644018d45139ec876ce7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -151,6 +146,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028544829641992378, guid: b05f51edf0af644018d45139ec876ce7,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Unfortunately, you''ve missed the quota.
+
+        A penalty has been applied.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b05f51edf0af644018d45139ec876ce7, type: 3}

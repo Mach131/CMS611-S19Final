@@ -6,15 +6,24 @@ using TMPro;
 
 public class TimelineScroller : MonoBehaviour
 {
-    public Transform contentPanel;
+    public RectTransform contentPanel;
+    public ScrollRect scrollRect;
     public SimpleObjectPool objectPool;
 
     private GameFlowController controller;
+    private float minScroll;
+    private float maxScroll;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         controller = FindObjectOfType<GameFlowController>();
+        minScroll = contentPanel.rect.yMin;
+        maxScroll = contentPanel.rect.yMax;
+    }
+
+    void Start()
+    {
         RefreshDisplay();
     }
 
@@ -47,5 +56,22 @@ public class TimelineScroller : MonoBehaviour
             TimelineEntry entry = obj.GetComponent<TimelineEntry>();
             entry.Setup(turnNumber, quota, this);
         }
+    }
+
+    public void SnapTo(RectTransform target)
+    {
+        Canvas.ForceUpdateCanvases();
+        Vector2 snap =
+            (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position)
+            - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
+
+        if (snap.y < minScroll)
+        {
+            snap.y = minScroll;
+        } else if (snap.y > maxScroll)
+        {
+            snap.y = maxScroll;
+        }
+        contentPanel.anchoredPosition = snap;
     }
 }

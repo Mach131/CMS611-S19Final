@@ -11,11 +11,12 @@ public class Market : MonoBehaviour
 {
     public static float buyPriceFactor = 1.1f;
     public static float supplyResetFactor = 0.2f;
-    public Image marketPanel;
-    private MarketList marketMenuList;
 
-    private Dictionary<string, CropMarketData> cropToData;
+    private GameFlowController mainController;
+    private MarketPanel marketPanel;
+    private MarketList marketMenuList;
     private Player player;
+    private Dictionary<string, CropMarketData> cropToData;
 
     /// <summary>
     /// Contains relevant market information for a single crop, and provides ways to update it
@@ -227,13 +228,19 @@ public class Market : MonoBehaviour
         marketMenuList.updatePriceText();
     }
 
+    void Awake()
+    {
+        mainController = FindObjectOfType<GameFlowController>();
+        player = FindObjectOfType<Player>();
+        marketPanel = FindObjectOfType<MarketPanel>();
+        marketMenuList = marketPanel.gameObject.GetComponentInChildren<MarketList>();
+    }
 
     /////Private Methods
 
     // Start is called before the first frame update
     void Start()
     {
-        GameFlowController mainController = FindObjectOfType<GameFlowController>();
         cropToData = new Dictionary<string, CropMarketData>();
         foreach (GameFlowController.Crop crop in mainController.availableCrops)
         {
@@ -241,8 +248,5 @@ public class Market : MonoBehaviour
                 crop.mVarC1, crop.mVarC2, crop.mVarS, crop.mVarD);
             cropToData.Add(crop.cropName, cropData);
         }
-
-        player = FindObjectOfType<Player>();
-        marketMenuList = marketPanel.gameObject.GetComponentInChildren<MarketList>();
     }
 }

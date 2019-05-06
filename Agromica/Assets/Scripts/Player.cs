@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        currentMoney = 0;
+        currentMoney = 10;
         updateInventory();
     }
 

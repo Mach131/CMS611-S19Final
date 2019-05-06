@@ -9,15 +9,20 @@ using System.Globalization;
 public class Bank : MonoBehaviour
 {
     public float interestRate;
-    public Image bankPanel;
-    public Text loanInput;
-    public Text payInput;
-    public TextMeshProUGUI currentDebt;
+
+    [SerializeField]
+    private Text currentDebt;
+
+    private InputField loanInput, payInput;
     private Player player;
+    private BankPanel bankPanel;
 
     void Awake()
     {
         player = FindObjectOfType<Player>();
+        bankPanel = FindObjectOfType<BankPanel>();
+        loanInput = FindObjectOfType<LoanBorrowInputField>().gameObject.GetComponent<InputField>();
+        payInput = FindObjectOfType<LoanRepayInputField>().gameObject.GetComponent<InputField>();
         interestRate = .1f;
     }
 
@@ -61,23 +66,6 @@ public class Bank : MonoBehaviour
         } else {
             Debug.Log("Cannot parse integer: " + input);
         }
-    }
-
-    private GameObject findInputText(string textName)
-    {
-        // This transform should come from the menu for the bank
-        // CurrentDebt is the text field for current debt. 
-        // LoanInput is the text field for taking a loan
-        // PaymentInput is the text field for paying a loan
-        Transform[] ts = bankPanel.gameObject.GetComponentsInChildren<Transform>();
-        GameObject timeLeft = null;
-        foreach (Transform child in ts)
-        {
-            // Debug.Log(child.name);
-            if (child.name.Equals(textName))
-                timeLeft = child.gameObject;
-        }
-        return timeLeft;
     }
 
     public void CompoundInterest(int turn)

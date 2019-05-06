@@ -6,18 +6,15 @@ using TMPro;
 
 public class PlayerStatDisplay : MonoBehaviour
 {
-    public Player player;
-    public TextMeshProUGUI money;
-    public TextMeshProUGUI debt;
-    public TextMeshProUGUI inventory;
+    private Player player;
+    [SerializeField]
+    private TextMeshProUGUI money, debt, inventory;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        player = FindObjectOfType<Player>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Refresh();
@@ -30,7 +27,7 @@ public class PlayerStatDisplay : MonoBehaviour
         inventory.text = "Crop Inventory\n";
         foreach (KeyValuePair<string, int> kvp in player.cropInventory)
         {
-            inventory.text += string.Format("{1} {0}\n", kvp.Key, kvp.Value);
+            inventory.text += string.Format("{0} (x{1})\n", kvp.Key, kvp.Value);
         }
     }
 }
