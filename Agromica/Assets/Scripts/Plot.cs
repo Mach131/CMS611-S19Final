@@ -14,7 +14,7 @@ public class Plot : MonoBehaviour
     [Header("Reference to prefabs")]
     public GameObject seedPrefabObject;
     //public GameObject plantMenuPrefab;
-    public int plotPrice = 10;
+    public static int plotPrice = 10;
 
     GameFlowController controller;
 
@@ -199,7 +199,7 @@ public class Plot : MonoBehaviour
 
     public void buyPlot()
     {
-        int amount = plotPrice;
+        int amount = Plot.plotPrice;
         if (!unlocked && player.currentMoney >= amount)
         {
             this.buyMenu.SetActive(false);

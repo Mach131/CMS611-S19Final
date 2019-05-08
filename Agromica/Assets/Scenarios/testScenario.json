@@ -3,6 +3,7 @@
   "plots":  2,
   "debt":  0,
   "money": 0,
+  "plotPrice": 11,
 	"crops" : [
 		{"cropName" : "Wheat", "turnsToGrow" : 1, "iconResourcePath" : "Sprites/wheatIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 3000, "mVarC2" : 250, "mVarS" : 1, "mVarD" : 1

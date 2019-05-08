@@ -86,6 +86,7 @@ public class GameFlowController : MonoBehaviour
         public int plots = 1;
         public int debt = 0;
         public int money = 0;
+        public int plotPrice = 10;
         public Crop[] crops = new Crop[0];
         public Quota[] quotas = new Quota[0];
     }
@@ -220,7 +221,7 @@ public class GameFlowController : MonoBehaviour
         Plot[] plots = FindObjectsOfType<Plot>();
         for (int i = 0; i < initialPlotsAvailable; i++)
         {
-            player.currentMoney += plots[i].plotPrice;
+            player.currentMoney += Plot.plotPrice;
             plots[i].buyPlot();
         }
 
@@ -237,6 +238,7 @@ public class GameFlowController : MonoBehaviour
         initialPlotsAvailable = loadedData.plots;
         player.currentMoney = loadedData.money;
         player.currentDebt = loadedData.debt;
+        Plot.plotPrice = loadedData.plotPrice;
         quotas = new List<Quota>(loadedData.quotas);
     }
 }
