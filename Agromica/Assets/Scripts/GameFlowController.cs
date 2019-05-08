@@ -128,7 +128,9 @@ public class GameFlowController : MonoBehaviour
             if (failedQuota)
             {
                 Debug.Log("failed quota");
-                player.currentDebt += 80;
+                //This is 73 since interest is added after this is applied
+                //It makes the penalty 80
+                player.currentDebt += 73;
                 player.updateInventory();
                 // TODO: temp penalty for failing quota
                 Instantiate(failedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
