@@ -215,7 +215,10 @@ public class GameFlowController : MonoBehaviour
         Plot[] plots = FindObjectsOfType<Plot>();
         for (int i = 0; i < initialPlotsAvailable; i++)
         {
-            plots[i].unlocked = true;
+            Debug.Log(plots[i]);
+            Debug.Log(plots[i].unlocked);
+            player.currentMoney += plots[i].plotPrice;
+            plots[i].buyPlot();
         }
 
     }
