@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Controls the flow of the game, particularly initialization and the changing of state between turns.
@@ -184,6 +185,8 @@ public class GameFlowController : MonoBehaviour
         player = FindObjectOfType<Player>();
         market = FindObjectOfType<Market>();
         bank = FindObjectOfType<Bank>();
+
+        GameObject.Find("Turn Button").GetComponent<Button>().onClick.AddListener(() => updateTurn());
     }
 
     /// <summary>

@@ -278,7 +278,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4524071260165437681}
-        m_MethodName: goToTargetScene
+        m_MethodName: onSceneTransitionPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

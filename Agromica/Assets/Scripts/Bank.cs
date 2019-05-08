@@ -9,8 +9,7 @@ using System.Globalization;
 public class Bank : MonoBehaviour
 {
     public float interestRate;
-
-    [SerializeField]
+    
     private Text currentDebt;
 
     private InputField loanInput, payInput;
@@ -24,6 +23,8 @@ public class Bank : MonoBehaviour
         loanInput = FindObjectOfType<LoanBorrowInputField>().gameObject.GetComponent<InputField>();
         payInput = FindObjectOfType<LoanRepayInputField>().gameObject.GetComponent<InputField>();
         interestRate = .1f;
+
+        currentDebt = bankPanel.transform.Find("Player Debt").GetComponent<Text>();
     }
 
     void OnEnable()

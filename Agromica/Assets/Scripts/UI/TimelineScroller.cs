@@ -11,7 +11,6 @@ public class TimelineScroller : MonoBehaviour
     public SimpleObjectPool objectPool;
 
     private GameFlowController controller;
-    private RectTransform content, maskTransform, scrollRectTransform;
 
     // Use this for initialization
     void Awake()
@@ -32,7 +31,7 @@ public class TimelineScroller : MonoBehaviour
 
     private void RemoveEntries()
     {
-        while (content.childCount > 0)
+        while (scrollRect.content.childCount > 0)
         {
             GameObject toRemove = transform.GetChild(0).gameObject;
             objectPool.ReturnObject(toRemove);
@@ -48,7 +47,7 @@ public class TimelineScroller : MonoBehaviour
             controller.turnToQuota.TryGetValue(turnNumber, out quota);
 
             GameObject obj = objectPool.GetObject();
-            obj.transform.SetParent(content, false);
+            obj.transform.SetParent(scrollRect.content, false);
 
             TimelineEntry entry = obj.GetComponent<TimelineEntry>();
             entry.Setup(turnNumber, quota, this);
@@ -57,7 +56,6 @@ public class TimelineScroller : MonoBehaviour
 
     public void SnapTo(RectTransform target)
     {
-        // can't get this to work
     }
 
     public void SnapToCurrent()
