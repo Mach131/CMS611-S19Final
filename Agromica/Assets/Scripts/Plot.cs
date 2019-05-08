@@ -136,6 +136,7 @@ public class Plot : MonoBehaviour
                 if (b.name == "Yes Button")
                     yes = b;
             }
+            yes.onClick.RemoveAllListeners();
             yes.onClick.AddListener(this.buyPlot);
         }
     }

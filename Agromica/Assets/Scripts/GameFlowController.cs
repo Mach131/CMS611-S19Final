@@ -14,6 +14,7 @@ public class GameFlowController : MonoBehaviour
     public int numberOfRounds;
     public List<Crop> availableCrops;
     public List<Quota> quotas;
+    public int initialPlotsAvailable;
     [Header("Scene References")]
     public Player playerObject;
 
@@ -24,6 +25,7 @@ public class GameFlowController : MonoBehaviour
     private Player player;
     private Market market;
     private Bank bank;
+
 
     public GameObject failedQuotaMessage;
     public GameObject passedQuotaMessage;
@@ -80,6 +82,7 @@ public class GameFlowController : MonoBehaviour
     private class ScenarioDataLoader
     {
         public int rounds = 0;
+        public int plots = 1;
         public Crop[] crops = new Crop[0];
         public Quota[] quotas = new Quota[0];
     }
@@ -181,6 +184,11 @@ public class GameFlowController : MonoBehaviour
         player = FindObjectOfType<Player>();
         market = FindObjectOfType<Market>();
         bank = FindObjectOfType<Bank>();
+        Plot[] plots = FindObjectsOfType<Plot>();
+        for(int i = 0; i < initialPlotsAvailable; i++)
+        {
+            plots[i].unlocked = true;
+        }
     }
 
     /// <summary>
@@ -216,6 +224,7 @@ public class GameFlowController : MonoBehaviour
         ScenarioDataLoader loadedData = JsonUtility.FromJson<ScenarioDataLoader>(scenarioData.text);
         numberOfRounds = loadedData.rounds;
         availableCrops = new List<Crop>(loadedData.crops);
+        initialPlotsAvailable = loadedData.plots;
         quotas = new List<Quota>(loadedData.quotas);
     }
 }
