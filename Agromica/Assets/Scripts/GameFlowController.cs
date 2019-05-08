@@ -184,11 +184,6 @@ public class GameFlowController : MonoBehaviour
         player = FindObjectOfType<Player>();
         market = FindObjectOfType<Market>();
         bank = FindObjectOfType<Bank>();
-        Plot[] plots = FindObjectsOfType<Plot>();
-        for(int i = 0; i < initialPlotsAvailable; i++)
-        {
-            plots[i].unlocked = true;
-        }
     }
 
     /// <summary>
@@ -213,6 +208,12 @@ public class GameFlowController : MonoBehaviour
         }
         
         currentTurn = 0;
+
+        Plot[] plots = FindObjectsOfType<Plot>();
+        for (int i = 0; i < initialPlotsAvailable; i++)
+        {
+            plots[i].unlocked = true;
+        }
 
     }
 
