@@ -48,6 +48,7 @@ public class Plot : MonoBehaviour
 
         if (state == 2 && plantedSeed.isDoneGrowing())
         {
+            Debug.Log(plantedSeed.harvestAmount);
             player.cropInventory[plantedSeed.cropType] += plantedSeed.harvestAmount;
             Debug.Log(plantedSeed.cropType + ": " + player.cropInventory[plantedSeed.cropType]);
 

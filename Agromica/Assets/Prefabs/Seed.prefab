@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef4b8a954ed40d4bb799d00480c4c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cropType: 
+  harvestAmount: 10

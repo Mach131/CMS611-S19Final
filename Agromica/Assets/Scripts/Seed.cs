@@ -11,7 +11,7 @@ public class Seed : MonoBehaviour
 
     private int growthTurnsRemaining;
 
-    public int harvestAmount = 1;
+    public int harvestAmount;
 
     /// <summary>
     /// Sets up the seed based on the crop it grows into. Call this before using any other methods.
@@ -23,6 +23,7 @@ public class Seed : MonoBehaviour
         GameFlowController mainController = FindObjectOfType<GameFlowController>();
         GameFlowController.Crop cropInfo = mainController.cropLookup(cropType);
         growthTurnsRemaining = cropInfo.turnsToGrow;
+        harvestAmount = 15;
     }
 
     /// <summary>
