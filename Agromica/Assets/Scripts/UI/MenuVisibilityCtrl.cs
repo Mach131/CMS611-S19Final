@@ -44,6 +44,11 @@ public class MenuVisibilityCtrl : MonoBehaviour
         _invisibleBG.SetActive(true); // Activate whenever parent is active.
     }
 
+    void OnDisable()
+    {
+        _invisibleBG.SetActive(false);
+    }
+
     // Called when this object is clicked.
     public void hide()
     {

@@ -85,8 +85,6 @@ public class Plot : MonoBehaviour
         {
             if (state == 0)
             {
-                this.plotMenu.SetActive(false);
-
                 //make seed, initialize with given type
                 GameObject newPlant = Instantiate(seedPrefabObject, transform);
                 plantedSeed = newPlant.GetComponent<Seed>();
@@ -98,6 +96,8 @@ public class Plot : MonoBehaviour
                 state = 1;
             }
         }
+        // Close menu
+        this.plotMenu.SetActive(false);
     }
 
     /// <summary>
@@ -107,20 +107,9 @@ public class Plot : MonoBehaviour
     {
         if (state == 0 && unlocked) 
         {
-            this.plotMenu.SetActive(true);
-
-            //Debug.Log(plotMenu.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).childCount);
-            //Debug.Log(plotMenu.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject);
-            //Component[] coms = plotMenu.gameObject.GetComponentsInChildren<Button>();
-            //Debug.Log("coms?");
-            //Debug.Log(coms.Length);
-
-
-            Button[] buttons = plotMenu.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponents<Button>();
-            Debug.Log(buttons.Length);
-            foreach (Button b in buttons)
+            foreach (SeedEntry entry in plotMenu.GetComponent<SeedScroller>().currentEntries)
             {
-                Debug.Log(b);
+                Debug.Log(string.Format("Found button for {0}.", entry.cropName.text));
             }
         }
     }
@@ -129,7 +118,6 @@ public class Plot : MonoBehaviour
     {
         if (!unlocked)
         {
-            this.buyMenu.SetActive(true);
             Button[] buttons = buyMenu.GetComponentsInChildren<Button>();
             Button yes = null;
             foreach (Button b in buttons)
@@ -190,11 +178,19 @@ public class Plot : MonoBehaviour
     {
         controller.lastPlotToClick = this;
         if (!unlocked)
+        {
+            this.buyMenu.SetActive(true);
             BuyMenu();
+        }
         else if (state == 0)
+        {
+            this.plotMenu.SetActive(true);
             PlotMenu();
+        }
         else
+        {
             attemptHarvest();
+        }
     }
 
     public void buyPlot()
@@ -202,12 +198,16 @@ public class Plot : MonoBehaviour
         int amount = Plot.plotPrice;
         if (!unlocked && player.currentMoney >= amount)
         {
-            this.buyMenu.SetActive(false);
             player.currentMoney -= amount;
             unlocked = true;
             Text timeLeft = findPlantText();
             timeLeft.text = "Empty";
-
         }
+        else
+        {
+            Debug.Log("You don't have enough money to purchase this plot.");
+        }
+        // Close menu
+        this.buyMenu.SetActive(false);
     }
 }

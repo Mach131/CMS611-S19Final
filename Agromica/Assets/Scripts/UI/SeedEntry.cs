@@ -13,17 +13,15 @@ public class SeedEntry : MonoBehaviour
     private SeedScroller scroller;
     private GameFlowController controller;
 
+    void Awake()
+    {
+        controller = FindObjectOfType<GameFlowController>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        controller = FindObjectOfType<GameFlowController>();
         this.gameObject.GetComponent<Button>().onClick.AddListener(selectSeed);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void selectSeed()

@@ -169,7 +169,6 @@ MonoBehaviour:
   buyMenu: {fileID: 7230200106687029114}
   seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
     type: 3}
-  plotPrice: 10
   unlocked: 0
   state: 0
 --- !u!114 &3925821908882680849
@@ -340,8 +339,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2987633504484846216}
   m_HandleRect: {fileID: 6647467095452687091}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.99999994
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -974,8 +973,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3264109917339054903}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 240, y: 0.000015258789, z: 0}
-  m_LocalScale: {x: 3.820303, y: 3.820303, z: 3.820303}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7161475399370306667}
   m_RootOrder: 2
@@ -1004,7 +1003,6 @@ GameObject:
   - component: {fileID: 5375684854905072172}
   - component: {fileID: 2014279909242102613}
   - component: {fileID: 6679157410817008375}
-  - component: {fileID: 4333520388640080719}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1028,7 +1026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000045776367}
+  m_AnchoredPosition: {x: 0, y: 0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2014279909242102613
@@ -1068,20 +1066,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
---- !u!114 &4333520388640080719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3521338916349591339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f7cc995bf11f144a821e6c6c89667f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contentPanel: {fileID: 5375684854905072172}
-  objectPool: {fileID: 8209637405946307576}
 --- !u!1 &3668505579443764342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1234,6 @@ MonoBehaviour:
   buyMenu: {fileID: 7230200106687029114}
   seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
     type: 3}
-  plotPrice: 10
   unlocked: 0
   state: 0
 --- !u!114 &5219039681400599707
@@ -1319,6 +1302,7 @@ GameObject:
   - component: {fileID: 3907134342700027515}
   - component: {fileID: 8562199545120226182}
   - component: {fileID: 6863657995597660049}
+  - component: {fileID: 3584637541744110215}
   m_Layer: 5
   m_Name: Seed Panel
   m_TagString: Untagged
@@ -1410,6 +1394,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0313bce1341a1f74484157e77b342346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3584637541744110215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104355290429567641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f7cc995bf11f144a821e6c6c89667f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollRect: {fileID: 7698600255505972616}
+  objectPool: {fileID: 8209637405946307576}
 --- !u!1 &4730241527270254111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,7 +1502,6 @@ MonoBehaviour:
   buyMenu: {fileID: 7230200106687029114}
   seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
     type: 3}
-  plotPrice: 10
   unlocked: 0
   state: 0
 --- !u!114 &8653538198561356016
@@ -2080,7 +2077,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 669773429656168929}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2308,7 +2305,7 @@ RectTransform:
   m_GameObject: {fileID: 7544600746259858369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 6779031278048641105}
   - {fileID: 7161475399370306667}
@@ -2475,7 +2472,6 @@ MonoBehaviour:
   buyMenu: {fileID: 7230200106687029114}
   seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
     type: 3}
-  plotPrice: 10
   unlocked: 0
   state: 0
 --- !u!114 &207280691262734373
@@ -2864,7 +2860,6 @@ MonoBehaviour:
   buyMenu: {fileID: 7230200106687029114}
   seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
     type: 3}
-  plotPrice: 10
   unlocked: 0
   state: 0
 --- !u!114 &5271774368489629290
@@ -3014,7 +3009,6 @@ MonoBehaviour:
   buyMenu: {fileID: 7230200106687029114}
   seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
     type: 3}
-  plotPrice: 10
   unlocked: 0
   state: 0
 --- !u!114 &7023831393285199385

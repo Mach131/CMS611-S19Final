@@ -9,6 +9,7 @@ public class TimelineScroller : MonoBehaviour
 {
     public ScrollRect scrollRect;
     public SimpleObjectPool objectPool;
+    public HashSet<TimelineEntry> currentEntries = new HashSet<TimelineEntry>();
 
     private GameFlowController controller;
 
@@ -34,6 +35,7 @@ public class TimelineScroller : MonoBehaviour
         while (scrollRect.content.childCount > 0)
         {
             GameObject toRemove = transform.GetChild(0).gameObject;
+            currentEntries.Remove(toRemove.GetComponent<TimelineEntry>());
             objectPool.ReturnObject(toRemove);
         }
     }
@@ -51,6 +53,7 @@ public class TimelineScroller : MonoBehaviour
 
             TimelineEntry entry = obj.GetComponent<TimelineEntry>();
             entry.Setup(turnNumber, quota, this);
+            currentEntries.Add(entry);
         }
     }
 

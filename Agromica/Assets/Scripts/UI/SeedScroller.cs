@@ -6,16 +6,20 @@ using TMPro;
 
 public class SeedScroller : MonoBehaviour
 {
-    public Transform contentPanel;
+    public ScrollRect scrollRect;
     public SimpleObjectPool objectPool;
+    public HashSet<SeedEntry> currentEntries = new HashSet<SeedEntry>();
 
-    private HashSet<SeedEntry> currentEntries = new HashSet<SeedEntry>();
     private GameFlowController controller;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         controller = FindObjectOfType<GameFlowController>();
+    }
+
+    void Start()
+    {
         RefreshDisplay();
     }
 
@@ -27,7 +31,7 @@ public class SeedScroller : MonoBehaviour
 
     private void RemoveEntries()
     {
-        while (contentPanel.childCount > 0)
+        while (scrollRect.content.childCount > 0)
         {
             GameObject toRemove = transform.GetChild(0).gameObject;
             currentEntries.Remove(toRemove.GetComponent<SeedEntry>());
@@ -41,7 +45,7 @@ public class SeedScroller : MonoBehaviour
         {
             GameFlowController.Crop crop = controller.availableCrops[i];
             GameObject obj = objectPool.GetObject();
-            obj.transform.SetParent(contentPanel, false);
+            obj.transform.SetParent(scrollRect.content, false);
 
             SeedEntry seedEntry = obj.GetComponent<SeedEntry>();
             seedEntry.Setup(crop, this);
