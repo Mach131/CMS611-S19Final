@@ -25,7 +25,7 @@ public class Plot : MonoBehaviour
     // State 0 is empty, 1 is planted, 2 is ready to harvest. 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = FindObjectOfType<Player>();
 
