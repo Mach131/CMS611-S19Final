@@ -84,6 +84,8 @@ public class GameFlowController : MonoBehaviour
     {
         public int rounds = 0;
         public int plots = 1;
+        public int debt = 0;
+        public int money = 0;
         public Crop[] crops = new Crop[0];
         public Quota[] quotas = new Quota[0];
     }
@@ -177,15 +179,16 @@ public class GameFlowController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if (loadFromFile)
-        {
-            LoadScenario();
-        }
+
 
         player = FindObjectOfType<Player>();
         market = FindObjectOfType<Market>();
         bank = FindObjectOfType<Bank>();
 
+        if (loadFromFile)
+        {
+            LoadScenario();
+        }
         GameObject.Find("Turn Button").GetComponent<Button>().onClick.AddListener(() => updateTurn());
     }
 
@@ -232,6 +235,8 @@ public class GameFlowController : MonoBehaviour
         numberOfRounds = loadedData.rounds;
         availableCrops = new List<Crop>(loadedData.crops);
         initialPlotsAvailable = loadedData.plots;
+        player.currentMoney = loadedData.money;
+        player.currentDebt = loadedData.debt;
         quotas = new List<Quota>(loadedData.quotas);
     }
 }
