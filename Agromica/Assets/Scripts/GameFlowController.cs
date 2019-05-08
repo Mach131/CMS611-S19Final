@@ -16,6 +16,7 @@ public class GameFlowController : MonoBehaviour
     public List<Crop> availableCrops;
     public List<Quota> quotas;
     public int initialPlotsAvailable;
+    public int quotaFailureCost;
     [Header("Scene References")]
     public Player playerObject;
 
@@ -87,6 +88,7 @@ public class GameFlowController : MonoBehaviour
         public int debt = 0;
         public int money = 0;
         public int plotPrice = 10;
+        public int failureCost = 10;
         public Crop[] crops = new Crop[0];
         public Quota[] quotas = new Quota[0];
     }
@@ -129,9 +131,8 @@ public class GameFlowController : MonoBehaviour
             if (failedQuota)
             {
                 Debug.Log("failed quota");
-                //This is 73 since interest is added after this is applied
-                //It makes the penalty 80
-                player.currentDebt += 73;
+                //Interest is added after this is. So it is 10% more.
+                player.currentDebt += quotaFailureCost;
                 player.updateInventory();
                 // TODO: temp penalty for failing quota
                 Instantiate(failedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
@@ -239,6 +240,7 @@ public class GameFlowController : MonoBehaviour
         player.currentMoney = loadedData.money;
         player.currentDebt = loadedData.debt;
         Plot.plotPrice = loadedData.plotPrice;
+        quotaFailureCost = loadedData.failureCost;
         quotas = new List<Quota>(loadedData.quotas);
     }
 }
