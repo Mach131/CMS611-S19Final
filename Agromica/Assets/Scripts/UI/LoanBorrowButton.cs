@@ -12,6 +12,6 @@ public class LoanBorrowButton : MonoBehaviour
     {
         button = gameObject.GetComponent<Button>();
         bankScript = FindObjectOfType<Bank>();
-        button.onClick.AddListener(bankScript.takeLoan);
+        button.onClick.AddListener(() => bankScript.takeLoan());
     }
 }
