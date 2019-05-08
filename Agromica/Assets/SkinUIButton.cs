@@ -7,23 +7,54 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class SkinUIButton : SkinUI
 {
-    Button button;
-    Image image;
 
-    //public ButtonType buttonType;
+    protected Button button;
+    protected Image image;
+
+    public ButtonType buttonType;
+
+    public enum ButtonType
+    {
+        Default,
+        Confirm,
+        Decline,
+        Warning
+    }
+
+    public override void Awake()
+    {
+        button = GetComponent<Button>();
+        image = GetComponent<Image>();
+
+        base.Awake();
+    }
 
     protected override void OnSkinUI()
     {
-
-        base.OnSkinUI();
-        image = GetComponent<Image>();
-        button = GetComponent<Button>();
-
         button.transition = Selectable.Transition.SpriteSwap;
         button.targetGraphic = image;
 
         image.sprite = skinData.buttonSprite;
         image.type = Image.Type.Sliced;
         button.spriteState = skinData.buttonSpriteState;
+
+        switch (buttonType)
+        {
+            case ButtonType.Confirm:
+                image.color = skinData.confirmColor;
+                break;
+            case ButtonType.Decline:
+                image.color = skinData.declineColor;
+                break;
+            case ButtonType.Default:
+                image.color = skinData.defaultColor;
+                break;
+            case ButtonType.Warning:
+                image.color = skinData.warningColor;
+                break;
+        }
+
+        base.OnSkinUI();
     }
+
 }

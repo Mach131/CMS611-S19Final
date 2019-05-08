@@ -1,25 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class TimelineScroller : MonoBehaviour
 {
-    public RectTransform contentPanel;
     public ScrollRect scrollRect;
     public SimpleObjectPool objectPool;
 
     private GameFlowController controller;
-    private float minScroll;
-    private float maxScroll;
+    private RectTransform content, maskTransform, scrollRectTransform;
 
     // Use this for initialization
     void Awake()
     {
         controller = FindObjectOfType<GameFlowController>();
-        minScroll = contentPanel.rect.yMin;
-        maxScroll = contentPanel.rect.yMax;
     }
 
     void Start()
@@ -35,7 +32,7 @@ public class TimelineScroller : MonoBehaviour
 
     private void RemoveEntries()
     {
-        while (contentPanel.childCount > 0)
+        while (content.childCount > 0)
         {
             GameObject toRemove = transform.GetChild(0).gameObject;
             objectPool.ReturnObject(toRemove);
@@ -51,7 +48,7 @@ public class TimelineScroller : MonoBehaviour
             controller.turnToQuota.TryGetValue(turnNumber, out quota);
 
             GameObject obj = objectPool.GetObject();
-            obj.transform.SetParent(contentPanel, false);
+            obj.transform.SetParent(content, false);
 
             TimelineEntry entry = obj.GetComponent<TimelineEntry>();
             entry.Setup(turnNumber, quota, this);
@@ -60,18 +57,20 @@ public class TimelineScroller : MonoBehaviour
 
     public void SnapTo(RectTransform target)
     {
-        Canvas.ForceUpdateCanvases();
-        Vector2 snap =
-            (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position)
-            - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
+        // can't get this to work
+    }
 
-        if (snap.y < minScroll)
+    public void SnapToCurrent()
+    {
+        // Push current timeline entry to top of the visible entries.
+        TimelineEntry[] timelineEntries = this.GetComponentsInChildren<TimelineEntry>();
+        TimelineEntry curTurnEntry = timelineEntries.FirstOrDefault(
+            t => int.Parse(t.turnNumber.text) == controller.currentTurn
+            );
+        if (curTurnEntry != null)
         {
-            snap.y = minScroll;
-        } else if (snap.y > maxScroll)
-        {
-            snap.y = maxScroll;
+            Debug.Log("Auto-scrolling to current turn's timeline entry.");
+            this.SnapTo(curTurnEntry.GetComponent<RectTransform>());
         }
-        contentPanel.anchoredPosition = snap;
     }
 }
