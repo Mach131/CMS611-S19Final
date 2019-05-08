@@ -128,7 +128,7 @@ public class GameFlowController : MonoBehaviour
             if (failedQuota)
             {
                 Debug.Log("failed quota");
-                player.currentDebt += 500;
+                player.currentDebt += 80;
                 player.updateInventory();
                 // TODO: temp penalty for failing quota
                 Instantiate(failedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
@@ -218,8 +218,6 @@ public class GameFlowController : MonoBehaviour
         Plot[] plots = FindObjectsOfType<Plot>();
         for (int i = 0; i < initialPlotsAvailable; i++)
         {
-            Debug.Log(plots[i]);
-            Debug.Log(plots[i].unlocked);
             player.currentMoney += plots[i].plotPrice;
             plots[i].buyPlot();
         }
