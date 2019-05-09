@@ -113,9 +113,11 @@ public class GameFlowController : MonoBehaviour
     public void updateTurn()
     {
         //quotas
+        bool quotaTurn = false;
+        bool failedQuota = false;
         if (turnToQuota.ContainsKey(currentTurn))
         {
-            bool failedQuota = false;
+            quotaTurn = true;
 
             Quota currentQuota = turnToQuota[currentTurn];
             // Checks if the quota can be reached
@@ -149,10 +151,28 @@ public class GameFlowController : MonoBehaviour
         }
 
         //win condition
-        if (currentTurn >= numberOfRounds)
+        if (quotaTurn && currentTurn >= numberOfRounds)
         {
             Debug.Log("all rounds finished");
             //TODO: win condition, making sure u haven't already lost
+            if (!failedQuota && player.currentMoney >= player.currentDebt)
+            {
+                Debug.Log("success!!!");
+                //success message
+                //go to next scene, or return to title if last
+            }
+            else
+            {
+                if (failedQuota)
+                {
+                    Debug.Log("failed last quota...");
+                } else
+                {
+                    Debug.Log("too much debt...");
+                }
+                //fail message
+                //return to title screen
+            }
         }
         else
         {
