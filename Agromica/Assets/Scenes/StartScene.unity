@@ -2218,6 +2218,11 @@ PrefabInstance:
       propertyPath: fadeDuration
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3422549754315226754, guid: be0217fbdedb8ad42a4885d9951a1b06,
+        type: 3}
+      propertyPath: startingFade
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be0217fbdedb8ad42a4885d9951a1b06, type: 3}
 --- !u!1001 &4524071258647353477
@@ -2337,11 +2342,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4524071260165437681, guid: 16a7541e19481424ba71fbeb57b7ab97,
-        type: 3}
-      propertyPath: targetSceneName
-      value: NewIntegrationScene
-      objectReference: {fileID: 0}
     - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -2350,36 +2350,6 @@ PrefabInstance:
     - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
-        type: 3}
-      propertyPath: m_text
-      value: Start Game
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4524071259791374698, guid: 16a7541e19481424ba71fbeb57b7ab97,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
