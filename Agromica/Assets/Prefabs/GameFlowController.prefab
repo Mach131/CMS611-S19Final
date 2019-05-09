@@ -95,9 +95,20 @@ MonoBehaviour:
       requiredAmount: 4
     - cropName: Blue
       requiredAmount: 2
-  playerObject: {fileID: 0}
-  currentTurn: 0
+  initialPlotsAvailable: 0
+  quotaFailureCost: 0
   failedQuotaMessage: {fileID: 4787536885789395663, guid: 87c7acf21127a4fccba2ce3c276ea0ad,
     type: 3}
   passedQuotaMessage: {fileID: 6467005205402744770, guid: b05f51edf0af644018d45139ec876ce7,
     type: 3}
+  sceneFailDebtMessage: {fileID: 6467005205402744770, guid: e6d8a09ce8c11f540a507a5b5f3c2441,
+    type: 3}
+  sceneFailQuotaMessage: {fileID: 6467005205402744770, guid: b3f02b9b328ba394ca08f421ee9c3390,
+    type: 3}
+  scenePassNormalMessage: {fileID: 6467005205402744770, guid: 085b9c52b5c900644be6df2006579721,
+    type: 3}
+  scenePassFinalMessage: {fileID: 6467005205402744770, guid: 5df89860cb761d048841667a267fc186,
+    type: 3}
+  playerObject: {fileID: 0}
+  lastPlotToClick: {fileID: 0}
+  currentTurn: 0

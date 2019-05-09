@@ -17,22 +17,29 @@ public class GameFlowController : MonoBehaviour
     public List<Quota> quotas;
     public int initialPlotsAvailable;
     public int quotaFailureCost;
+    [Header("Leave empty if last scene")]
+    public string nextScene;
+
+    [Header("Popup Prefabs")]
+    public GameObject failedQuotaMessage;
+    public GameObject passedQuotaMessage;
+    public GameObject sceneFailDebtMessage;
+    public GameObject sceneFailQuotaMessage;
+    public GameObject scenePassNormalMessage;
+    public GameObject scenePassFinalMessage;
+
     [Header("Scene References")]
     public Player playerObject;
 
     public Dictionary<string, Crop> nameToCrop;
     public Dictionary<int, Quota> turnToQuota;
 
+    public Plot lastPlotToClick;
+
     public int currentTurn;
     private Player player;
     private Market market;
     private Bank bank;
-
-
-    public GameObject failedQuotaMessage;
-    public GameObject passedQuotaMessage;
-
-    public Plot lastPlotToClick;
 
     /////Helper Classes
 
@@ -137,7 +144,10 @@ public class GameFlowController : MonoBehaviour
                 player.currentDebt += quotaFailureCost;
                 player.updateInventory();
                 // TODO: temp penalty for failing quota
-                Instantiate(failedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                if (currentTurn < numberOfRounds)
+                {
+                    Instantiate(failedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                }
             }
             else
             {
@@ -146,7 +156,10 @@ public class GameFlowController : MonoBehaviour
                     string reqCrop = req.cropName;
                     player.cropInventory[reqCrop] -= req.requiredAmount;
                 }
-                Instantiate(passedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                if (currentTurn < numberOfRounds)
+                {
+                    Instantiate(passedQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                }
             }
         }
 
@@ -158,20 +171,27 @@ public class GameFlowController : MonoBehaviour
             if (!failedQuota && player.currentMoney >= player.currentDebt)
             {
                 Debug.Log("success!!!");
-                //success message
-                //go to next scene, or return to title if last
+                if (!nextScene.Equals(""))
+                {
+                    GameObject message = Instantiate(scenePassNormalMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    message.GetComponentInChildren<SceneTransition>().targetSceneName = nextScene;
+                } else
+                {
+                    Instantiate(scenePassFinalMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                }
             }
             else
             {
+                //show appropriate fail condition
                 if (failedQuota)
                 {
                     Debug.Log("failed last quota...");
+                    Instantiate(sceneFailQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
                 } else
                 {
                     Debug.Log("too much debt...");
+                    Instantiate(sceneFailDebtMessage, new Vector3(0, 0, 0), Quaternion.identity);
                 }
-                //fail message
-                //return to title screen
             }
         }
         else
