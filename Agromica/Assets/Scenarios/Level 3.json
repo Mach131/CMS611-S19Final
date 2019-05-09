@@ -1,8 +1,10 @@
 {
 	"rounds" : 15,
-  "plots":  3,
-  "debt":  0,
-  "money": 0,
+	"plots":  3,
+	"debt":  0,
+	"money": 0,
+	"plotPrice": 11,
+	"failureCost": 73,
 	"crops" : [
 		{"cropName" : "Wheat", "turnsToGrow" : 1, "iconResourcePath" : "Sprites/wheatIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 12000, "mVarC2" : 1000, "mVarS" : 1, "mVarD" : 1
