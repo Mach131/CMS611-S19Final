@@ -9,7 +9,7 @@
 		{"cropName" : "Wheat", "turnsToGrow" : 1, "iconResourcePath" : "Sprites/wheatIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 12000, "mVarC2" : 1000, "mVarS" : 1, "mVarD" : 1
 		},
-		{"cropName" :	 "Taro", "turnsToGrow" : 2, "iconResourcePath" : "Sprites/taroIcon",
+		{"cropName" : "Taro", "turnsToGrow" : 2, "iconResourcePath" : "Sprites/taroIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 27000, "mVarC2" : 900, "mVarS" : 1, "mVarD" : 1
 		},
 		{"cropName" : "Sugarcane", "turnsToGrow" : 3, "iconResourcePath" : "Sprites/sugarcaneIcon",
