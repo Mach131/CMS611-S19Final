@@ -3,11 +3,11 @@
 	"plots":  3,
 	"debt":  0,
 	"money": 0,
-	"plotPrice": 11,
-	"failureCost": 73,
+	"plotPrice": 500,
+	"failureCost": 727,
 	"crops" : [
 		{"cropName" : "Wheat", "turnsToGrow" : 1, "iconResourcePath" : "Sprites/wheatIcon",
-			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 12000, "mVarC2" : 1000, "mVarS" : 1, "mVarD" : 1
+			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 7200, "mVarC2" : 600, "mVarS" : 2, "mVarD" : 1
 		},
 		{"cropName" : "Taro", "turnsToGrow" : 2, "iconResourcePath" : "Sprites/taroIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 27000, "mVarC2" : 900, "mVarS" : 1, "mVarD" : 1
