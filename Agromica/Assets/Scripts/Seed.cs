@@ -23,7 +23,7 @@ public class Seed : MonoBehaviour
         GameFlowController mainController = FindObjectOfType<GameFlowController>();
         GameFlowController.Crop cropInfo = mainController.cropLookup(cropType);
         growthTurnsRemaining = cropInfo.turnsToGrow;
-        harvestAmount = 10;
+        harvestAmount = 1;
     }
 
     /// <summary>
