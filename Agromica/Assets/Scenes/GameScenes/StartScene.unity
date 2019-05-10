@@ -2352,5 +2352,10 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4524071260165437681, guid: 16a7541e19481424ba71fbeb57b7ab97,
+        type: 3}
+      propertyPath: targetSceneName
+      value: ScenarioScene1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a7541e19481424ba71fbeb57b7ab97, type: 3}
