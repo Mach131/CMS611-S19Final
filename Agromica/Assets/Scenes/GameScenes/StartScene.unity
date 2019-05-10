@@ -2006,7 +2006,7 @@ MonoBehaviour:
 
 
     For each turn with a quota, you must have the required crops in your inventory
-    when you hit the "End Turn" button. Failure to do so will result in gaining 800
+    when you hit the "End Turn" button. Failure to do so will result in gaining 80
     debt.
 
 
@@ -2090,7 +2090,7 @@ MonoBehaviour:
   m_margin: {x: -46.070515, y: 0, z: 0, w: -438.88278}
   m_textInfo:
     textComponent: {fileID: 2067260905}
-    characterCount: 597
+    characterCount: 596
     spriteCount: 0
     spaceCount: 125
     wordCount: 121
