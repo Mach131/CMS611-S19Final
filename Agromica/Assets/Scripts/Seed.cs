@@ -10,6 +10,8 @@ public class Seed : MonoBehaviour
     public string cropType;
 
     private int growthTurnsRemaining;
+    private List<Sprite> plotSprites;
+    private int totalGrowthTurns;
 
     public int harvestAmount;
 
@@ -22,8 +24,20 @@ public class Seed : MonoBehaviour
         this.cropType = cropType;
         GameFlowController mainController = FindObjectOfType<GameFlowController>();
         GameFlowController.Crop cropInfo = mainController.cropLookup(cropType);
-        growthTurnsRemaining = cropInfo.turnsToGrow;
+
+        totalGrowthTurns = cropInfo.turnsToGrow;
+        growthTurnsRemaining = totalGrowthTurns;
         harvestAmount = 1;
+
+        plotSprites = new List<Sprite>();
+        foreach (string spritePath in cropInfo.plotGrowthSpritePaths)
+        {
+            plotSprites.Add(Resources.Load<Sprite>(spritePath));
+        }
+        if (plotSprites.Count != totalGrowthTurns + 1)
+        {
+            Debug.LogWarning("There may be an incorrect number of sprites for this plant");
+        }
     }
 
     /// <summary>
@@ -48,5 +62,15 @@ public class Seed : MonoBehaviour
     public int timeLeft()
     {
         return growthTurnsRemaining;
+    }
+
+    /// <summary>
+    /// Gets the current sprite that the plot showld use to represent the growth state.
+    /// </summary>
+    /// <returns>The sprite corresponding to this plant's growth progress</returns>
+    public Sprite currentPlotSprite()
+    {
+        int spriteIndex = (int) Mathf.Clamp(totalGrowthTurns - growthTurnsRemaining, 0, plotSprites.Count - 1);
+        return plotSprites[spriteIndex];
     }
 }

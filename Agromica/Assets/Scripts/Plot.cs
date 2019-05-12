@@ -82,6 +82,7 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             Debug.Log(plantedSeed.cropType + ": " + player.cropInventory[plantedSeed.cropType]);
 
             Destroy(plantedSeed.gameObject);
+            image.sprite = unlockedPlotSprite;
 
             /*Text timeLeft = findPlantText();
             timeLeft.text = "Empty";*/
@@ -118,6 +119,7 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 GameObject newPlant = Instantiate(seedPrefabObject, transform);
                 plantedSeed = newPlant.GetComponent<Seed>();
                 plantedSeed.Initialize(type);
+                image.sprite = plantedSeed.currentPlotSprite();
 
                 /*Text timeLeft = findPlantText();
                 timeLeft.text = plantedSeed.timeLeft().ToString();*/
@@ -185,7 +187,9 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
 
 
-            return plantedSeed.passTurn();
+            bool seedTurnResult = plantedSeed.passTurn();
+            image.sprite = plantedSeed.currentPlotSprite();
+            return seedTurnResult;
         }
         return false;
     }
