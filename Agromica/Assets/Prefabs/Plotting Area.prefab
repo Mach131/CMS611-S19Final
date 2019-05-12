@@ -165,13 +165,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantedSeed: {fileID: 0}
-  plotMenu: {fileID: 4104355290429567641}
-  buyMenu: {fileID: 7230200106687029114}
   toolTip: {fileID: 67368933582379014}
-  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
-    type: 3}
   unlocked: 0
   state: 0
+  lockedPlotSprite: {fileID: 21300000, guid: 11af8339813d07c45987da8170debb3f, type: 3}
+  unlockedPlotSprite: {fileID: 21300000, guid: 21c8b9fabcdc8ce47886dcf6663f6964, type: 3}
+  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
+    type: 3}
+  plotMenu: {fileID: 4104355290429567641}
+  buyMenu: {fileID: 7230200106687029114}
 --- !u!114 &3925821908882680849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,7 +1258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2014279909242102613
@@ -1460,13 +1462,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantedSeed: {fileID: 0}
-  plotMenu: {fileID: 4104355290429567641}
-  buyMenu: {fileID: 7230200106687029114}
   toolTip: {fileID: 67368933582379014}
-  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
-    type: 3}
   unlocked: 0
   state: 0
+  lockedPlotSprite: {fileID: 21300000, guid: 11af8339813d07c45987da8170debb3f, type: 3}
+  unlockedPlotSprite: {fileID: 21300000, guid: 21c8b9fabcdc8ce47886dcf6663f6964, type: 3}
+  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
+    type: 3}
+  plotMenu: {fileID: 4104355290429567641}
+  buyMenu: {fileID: 7230200106687029114}
 --- !u!114 &5219039681400599707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,13 +1733,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantedSeed: {fileID: 0}
-  plotMenu: {fileID: 4104355290429567641}
-  buyMenu: {fileID: 7230200106687029114}
   toolTip: {fileID: 67368933582379014}
-  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
-    type: 3}
   unlocked: 0
   state: 0
+  lockedPlotSprite: {fileID: 21300000, guid: 11af8339813d07c45987da8170debb3f, type: 3}
+  unlockedPlotSprite: {fileID: 21300000, guid: 21c8b9fabcdc8ce47886dcf6663f6964, type: 3}
+  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
+    type: 3}
+  plotMenu: {fileID: 4104355290429567641}
+  buyMenu: {fileID: 7230200106687029114}
 --- !u!114 &8653538198561356016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,7 +2315,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 669773429656168929}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999976
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2701,13 +2707,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantedSeed: {fileID: 0}
-  plotMenu: {fileID: 4104355290429567641}
-  buyMenu: {fileID: 7230200106687029114}
   toolTip: {fileID: 67368933582379014}
-  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
-    type: 3}
   unlocked: 0
   state: 0
+  lockedPlotSprite: {fileID: 21300000, guid: 11af8339813d07c45987da8170debb3f, type: 3}
+  unlockedPlotSprite: {fileID: 21300000, guid: 21c8b9fabcdc8ce47886dcf6663f6964, type: 3}
+  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
+    type: 3}
+  plotMenu: {fileID: 4104355290429567641}
+  buyMenu: {fileID: 7230200106687029114}
 --- !u!114 &207280691262734373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3090,13 +3098,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantedSeed: {fileID: 0}
-  plotMenu: {fileID: 4104355290429567641}
-  buyMenu: {fileID: 7230200106687029114}
   toolTip: {fileID: 67368933582379014}
-  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
-    type: 3}
   unlocked: 0
   state: 0
+  lockedPlotSprite: {fileID: 21300000, guid: 11af8339813d07c45987da8170debb3f, type: 3}
+  unlockedPlotSprite: {fileID: 21300000, guid: 21c8b9fabcdc8ce47886dcf6663f6964, type: 3}
+  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
+    type: 3}
+  plotMenu: {fileID: 4104355290429567641}
+  buyMenu: {fileID: 7230200106687029114}
 --- !u!114 &5271774368489629290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3240,13 +3250,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantedSeed: {fileID: 0}
-  plotMenu: {fileID: 4104355290429567641}
-  buyMenu: {fileID: 7230200106687029114}
   toolTip: {fileID: 67368933582379014}
-  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
-    type: 3}
   unlocked: 0
   state: 0
+  lockedPlotSprite: {fileID: 21300000, guid: 11af8339813d07c45987da8170debb3f, type: 3}
+  unlockedPlotSprite: {fileID: 21300000, guid: 21c8b9fabcdc8ce47886dcf6663f6964, type: 3}
+  seedPrefabObject: {fileID: 3599917257419903395, guid: 0aa8743fd9674f2478a6379c6863b3fb,
+    type: 3}
+  plotMenu: {fileID: 4104355290429567641}
+  buyMenu: {fileID: 7230200106687029114}
 --- !u!114 &7023831393285199385
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,13 +10,8 @@ using UnityEngine.UI;
 public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Seed plantedSeed;
-    public GameObject plotMenu;
-    public GameObject buyMenu;
     public HoverToolTip toolTip;
 
-    [Header("Reference to prefabs")]
-    public GameObject seedPrefabObject;
-    //public GameObject plantMenuPrefab;
     public static int plotPrice = 10;
 
     GameFlowController controller;
@@ -27,11 +22,25 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int state = 0;
     // State 0 is empty, 1 is planted, 2 is ready to harvest. 
 
+    public Sprite lockedPlotSprite;
+    public Sprite unlockedPlotSprite;
+
+    [Header("Reference to prefabs")]
+    public GameObject seedPrefabObject;
+    //public GameObject plantMenuPrefab;
+    public GameObject plotMenu;
+    public GameObject buyMenu;
+
+    private Image image;
+
     // Start is called before the first frame update
     void Awake()
     {
         player = FindObjectOfType<Player>();
         controller = FindObjectOfType<GameFlowController>();
+        image = GetComponent<Image>();
+
+        image.sprite = unlocked ? unlockedPlotSprite : lockedPlotSprite;
 
         //plotMenu = Instantiate(plantMenuPrefab, transform);
     }
@@ -222,6 +231,7 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             player.currentMoney -= amount;
             unlocked = true;
+            image.sprite = unlockedPlotSprite;
             Text timeLeft = findPlantText();
             timeLeft.text = "Empty";
         }
