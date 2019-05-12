@@ -21,29 +21,29 @@
 	],
 	"quotas" : [
 		{"turnNumber" : 3, "cropRequirements" : [
-			{"cropName" : "Wheat", "requiredAmount" : 10},
-			{"cropName" : "Taro", "requiredAmount" : 10},
+			{"cropName" : "Wheat", "requiredAmount" : 20},
+			{"cropName" : "Taro", "requiredAmount" : 30},
 			{"cropName" : "Sugarcane", "requiredAmount" : 0}
 		]},
 		{"turnNumber" : 6, "cropRequirements" : [
-			{"cropName" : "Wheat", "requiredAmount" : 30},
-			{"cropName" : "Taro", "requiredAmount" : 0},
-			{"cropName" : "Sugarcane", "requiredAmount" : 10}
-		]},
-		{"turnNumber" : 9, "cropRequirements" : [
 			{"cropName" : "Wheat", "requiredAmount" : 10},
-			{"cropName" : "Taro", "requiredAmount" : 20},
-			{"cropName" : "Sugarcane", "requiredAmount" : 10}
-		]},
-		{"turnNumber" : 12, "cropRequirements" : [
-			{"cropName" : "Wheat", "requiredAmount" : 0},
 			{"cropName" : "Taro", "requiredAmount" : 10},
 			{"cropName" : "Sugarcane", "requiredAmount" : 20}
+		]},
+		{"turnNumber" : 9, "cropRequirements" : [
+			{"cropName" : "Wheat", "requiredAmount" : 20},
+			{"cropName" : "Taro", "requiredAmount" : 0},
+			{"cropName" : "Sugarcane", "requiredAmount" : 30}
+		]},
+		{"turnNumber" : 12, "cropRequirements" : [
+			{"cropName" : "Wheat", "requiredAmount" : 40},
+			{"cropName" : "Taro", "requiredAmount" : 30},
+			{"cropName" : "Sugarcane", "requiredAmount" : 0}
 		]},
 		{"turnNumber" : 15, "cropRequirements" : [
 			{"cropName" : "Wheat", "requiredAmount" : 30},
 			{"cropName" : "Taro", "requiredAmount" : 20},
-			{"cropName" : "Sugarcane", "requiredAmount" : 20}
+			{"cropName" : "Sugarcane", "requiredAmount" : 30}
 		]}
 	]
 }
