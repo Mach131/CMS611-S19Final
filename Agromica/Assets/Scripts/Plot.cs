@@ -83,8 +83,8 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
             Destroy(plantedSeed.gameObject);
 
-            Text timeLeft = findPlantText();
-            timeLeft.text = "Empty";
+            /*Text timeLeft = findPlantText();
+            timeLeft.text = "Empty";*/
             //Changes the state holder to empty
             state = 0;
 
@@ -119,8 +119,8 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 plantedSeed = newPlant.GetComponent<Seed>();
                 plantedSeed.Initialize(type);
 
-                Text timeLeft = findPlantText();
-                timeLeft.text = plantedSeed.timeLeft().ToString();
+                /*Text timeLeft = findPlantText();
+                timeLeft.text = plantedSeed.timeLeft().ToString();*/
                 //Changes state to planted
                 state = 1;
             }
@@ -175,11 +175,11 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
             if (turns < 0)
                 turns = 0;
-            Text timeLeft = findPlantText();
-            timeLeft.text = turns.ToString();
+            /*Text timeLeft = findPlantText();
+            timeLeft.text = turns.ToString();*/
             if (turns == 0) 
             { 
-                timeLeft.text = "Harvest";
+                //timeLeft.text = "Harvest";
                 //state turned to ready
                 state = 2;
             }
@@ -190,7 +190,7 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         return false;
     }
 
-    private Text findPlantText()
+    /*private Text findPlantText()
     {
         Transform[] ts = this.gameObject.GetComponentsInChildren<Transform>();
         Text timeLeft = null;
@@ -201,7 +201,7 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         }
         return timeLeft;
-    }
+    }*/
 
     public void onClick()
     {
@@ -232,8 +232,8 @@ public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             player.currentMoney -= amount;
             unlocked = true;
             image.sprite = unlockedPlotSprite;
-            Text timeLeft = findPlantText();
-            timeLeft.text = "Empty";
+            /*Text timeLeft = findPlantText();
+            timeLeft.text = "Empty";*/
         }
         else
         {
