@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
 /// Represents a plot for seeds to grow in.
 /// </summary>
-public class Plot : MonoBehaviour
+public class Plot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Seed plantedSeed;
     public GameObject plotMenu;
     public GameObject buyMenu;
+    public HoverToolTip toolTip;
+
     [Header("Reference to prefabs")]
     public GameObject seedPrefabObject;
     //public GameObject plantMenuPrefab;
@@ -28,10 +31,27 @@ public class Plot : MonoBehaviour
     void Awake()
     {
         player = FindObjectOfType<Player>();
-
         controller = FindObjectOfType<GameFlowController>();
 
         //plotMenu = Instantiate(plantMenuPrefab, transform);
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        //Debug.Log(string.Format("Mouse now over plot {0}.", this.gameObject.name));
+        if (this.state != 0)
+        {
+            toolTip.ShowToolTip(this);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        //Debug.Log(string.Format("Mouse no longer over plot {0}.", this.gameObject.name));
+        if (toolTip.gameObject.activeSelf)
+        {
+            toolTip.HideToolTip();
+        }
     }
 
     /////Public UI functions
@@ -55,7 +75,7 @@ public class Plot : MonoBehaviour
             Destroy(plantedSeed.gameObject);
 
             Text timeLeft = findPlantText();
-            timeLeft.text = "Empty Plot";
+            timeLeft.text = "Empty";
             //Changes the state holder to empty
             state = 0;
 
@@ -179,11 +199,13 @@ public class Plot : MonoBehaviour
         controller.lastPlotToClick = this;
         if (!unlocked)
         {
-            this.buyMenu.SetActive(true);
+           this.buyMenu.transform.position = this.transform.position;
+           this.buyMenu.SetActive(true);
             BuyMenu();
         }
         else if (state == 0)
         {
+            this.plotMenu.transform.position = this.transform.position;
             this.plotMenu.SetActive(true);
             PlotMenu();
         }

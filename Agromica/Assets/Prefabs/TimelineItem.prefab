@@ -115,8 +115,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2694715880718803897}
   m_HandleRect: {fileID: 2832291195508079374}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -439,8 +439,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986703750025561394}
-  - component: {fileID: 2006355155586553476}
   - component: {fileID: 2446654903505279730}
+  - component: {fileID: 3713013045594896721}
   - component: {fileID: 2372983509708608450}
   m_Layer: 5
   m_Name: Scroll View
@@ -471,7 +471,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2006355155586553476
+--- !u!222 &2446654903505279730
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877830453620339486}
+  m_CullTransparentMesh: 0
+--- !u!114 &3713013045594896721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -480,7 +488,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4877830453620339486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: d5ed12256feafa9469d53860c519aabd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 1539132296389633846}
@@ -490,7 +498,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 7790421579928648164}
   m_HorizontalScrollbar: {fileID: 6333403998648922327}
   m_VerticalScrollbar: {fileID: 7995717050999665821}
@@ -503,14 +511,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!222 &2446654903505279730
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4877830453620339486}
-  m_CullTransparentMesh: 0
 --- !u!114 &2372983509708608450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,8 +619,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000030513349, y: 0}
+  m_SizeDelta: {x: 0.000030517578, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &947497411516087341
 MonoBehaviour:
