@@ -62,6 +62,9 @@ public class GameFlowController : MonoBehaviour
         public float mVarC2;
         public float mVarS;
         public float mVarD;
+
+        [SerializeField]
+        public List<string> plotGrowthSpritePaths;
     }
 
     /// <summary>
