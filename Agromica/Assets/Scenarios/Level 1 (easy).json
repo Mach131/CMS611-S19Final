@@ -6,15 +6,15 @@
 	"plotPrice": 500,
 	"failureCost": 727,
 	"crops" : [
-		{"cropName" : "Wheat", "turnsToGrow" : 1, "iconResourcePath" : "Sprites/wheatIcon",
+		{"cropName" : "Wheat", "turnsToGrow" : 1, "harvestAmount": 1, "iconResourcePath" : "Sprites/wheatIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 7200, "mVarC2" : 600, "mVarS" : 2, "mVarD" : 1,
 			"plotGrowthSpritePaths" : ["Sprites/farmWheatSeeded", "Sprites/farmWheatGrown"]
 		},
-		{"cropName" : "Taro", "turnsToGrow" : 2, "iconResourcePath" : "Sprites/taroIcon",
+		{"cropName" : "Taro", "turnsToGrow" : 2, "harvestAmount": 1, "iconResourcePath" : "Sprites/taroIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 27000, "mVarC2" : 900, "mVarS" : 1, "mVarD" : 1,
 			"plotGrowthSpritePaths" : ["Sprites/farmTaroSeeded", "Sprites/farmTaroGrowing", "Sprites/farmTaroGrown"]
 		},
-		{"cropName" : "Sugarcane", "turnsToGrow" : 3, "iconResourcePath" : "Sprites/sugarcaneIcon",
+		{"cropName" : "Sugarcane", "turnsToGrow" : 3, "harvestAmount": 1, "iconResourcePath" : "Sprites/sugarcaneIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 44000, "mVarC2" : 800, "mVarS" : 1, "mVarD" : 1,
 			"plotGrowthSpritePaths" : ["Sprites/farmSugarcaneSeeded", "Sprites/farmSugarcaneGrowing1", "Sprites/farmSugarcaneGrowing2", "Sprites/farmSugarcaneGrown"]
 		}

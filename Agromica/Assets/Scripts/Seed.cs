@@ -27,7 +27,7 @@ public class Seed : MonoBehaviour
 
         totalGrowthTurns = cropInfo.turnsToGrow;
         growthTurnsRemaining = totalGrowthTurns;
-        harvestAmount = 1;
+        harvestAmount = cropInfo.harvestAmount;
 
         plotSprites = new List<Sprite>();
         foreach (string spritePath in cropInfo.plotGrowthSpritePaths)

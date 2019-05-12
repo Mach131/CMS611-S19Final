@@ -51,6 +51,7 @@ public class GameFlowController : MonoBehaviour
     {
         public string cropName;
         public int turnsToGrow;
+        public int harvestAmount;
 
         //path of icon sprite under resources folder; e.g. "Sprites/taroIcon"
         public string iconResourcePath;
