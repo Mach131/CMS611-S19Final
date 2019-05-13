@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 1668804425899384745}
   - component: {fileID: 4993104119417366746}
   - component: {fileID: 6171079723492425008}
+  - component: {fileID: 5449862718749609623}
   m_Layer: 5
   m_Name: SeedItem
   m_TagString: Untagged
@@ -551,3 +552,15 @@ MonoBehaviour:
   cropName: {fileID: 6840080435977491967}
   turnsToGrow: {fileID: 5432500256012657401}
   icon: {fileID: 7472251689131601882}
+--- !u!114 &5449862718749609623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928946883820671814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa5ef9bdd819204a8c85112c8986099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
