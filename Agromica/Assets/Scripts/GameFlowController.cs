@@ -192,12 +192,14 @@ public class GameFlowController : MonoBehaviour
                 if (failedQuota)
                 {
                     Debug.Log("failed last quota...");
-                    Instantiate(sceneFailQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    GameObject quotaMessage = Instantiate(sceneFailQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    //quotaMessage.transform.SetParent();
                     musicController.stopMusic();
                 } else
                 {
                     Debug.Log("too much debt...");
-                    Instantiate(sceneFailDebtMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    GameObject quotaMessage = Instantiate(sceneFailDebtMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    //quotaMessage.transform.SetParent();
                     musicController.stopMusic();
                 }
             }
