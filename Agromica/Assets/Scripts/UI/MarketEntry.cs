@@ -36,7 +36,7 @@ public class MarketEntry : MonoBehaviour
     {
         //TODO: maybe not integers later
 
-        buyPrice.text = Mathf.CeilToInt(market.getBuyPrice(crop.cropName)).ToString();
-        sellPrice.text = Mathf.CeilToInt(market.getSellPrice(crop.cropName)).ToString();
+        buyPrice.text = ((int) Mathf.Round(market.getBuyPrice(crop.cropName))).ToString();
+        sellPrice.text = ((int) Mathf.Round(market.getSellPrice(crop.cropName))).ToString();
     }
 }

@@ -170,7 +170,7 @@ public class Market : MonoBehaviour
     /// <param name="amount">The amount of the crop to buy</param>
     public void buyCrop(string cropName, int amount)
     {
-        int purchasePrice = Mathf.CeilToInt(getBuyPrice(cropName)) * amount;
+        int purchasePrice = (int) Mathf.Round(getBuyPrice(cropName)) * amount;
         if (player.currentMoney >= purchasePrice)
         {
             //take away money
@@ -204,7 +204,7 @@ public class Market : MonoBehaviour
             player.updateInventory();
 
             //give money
-            int salePrice = Mathf.CeilToInt(getSellPrice(cropName)) * amount;
+            int salePrice = (int) Mathf.Round(getSellPrice(cropName)) * amount;
             player.currentMoney += salePrice;
 
             //update market

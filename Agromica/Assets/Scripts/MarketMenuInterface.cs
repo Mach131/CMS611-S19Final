@@ -31,8 +31,8 @@ public class MarketMenuInterface : MonoBehaviour
         {
             //TODO: may change to floats eventually
 
-            buyText[crop].text = "Price: " + Mathf.CeilToInt(market.getBuyPrice(crop));
-            sellText[crop].text = "Price: " + Mathf.CeilToInt(market.getSellPrice(crop));
+            buyText[crop].text = "Price: " + (int) Mathf.Round(market.getBuyPrice(crop));
+            sellText[crop].text = "Price: " + (int) Mathf.Round(market.getSellPrice(crop));
         }
     }
 
