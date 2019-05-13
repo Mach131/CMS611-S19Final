@@ -47,7 +47,8 @@ public class Bank : MonoBehaviour
             }
         } else {
             Debug.Log("Cannot parse integer: " + input);
-        }   
+        }
+        loanInput.text = "";
     }
 
     public void payLoan()
@@ -67,6 +68,7 @@ public class Bank : MonoBehaviour
         } else {
             Debug.Log("Cannot parse integer: " + input);
         }
+        payInput.text = "";
     }
 
     public void CompoundInterest(int turn)

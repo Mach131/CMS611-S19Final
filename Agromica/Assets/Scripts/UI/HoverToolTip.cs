@@ -40,7 +40,7 @@ public class HoverToolTip : MonoBehaviour
         plot = parentPlot;
         plotTransform = plot.gameObject.transform as RectTransform;
         Vector3 pos = plotTransform.localPosition;
-        pos.y += 40 + plotTransform.rect.height/2; // 40 is hardcoded to avoid a glitch I couldn't figure out
+        pos.y -= 35 + plotTransform.rect.height/2; // 40 is hardcoded to avoid a glitch I couldn't figure out
         toolTip.localPosition = pos;
         UpdateText();
     }
