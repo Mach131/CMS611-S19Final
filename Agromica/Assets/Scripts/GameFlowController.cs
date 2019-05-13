@@ -40,6 +40,7 @@ public class GameFlowController : MonoBehaviour
     private Player player;
     private Market market;
     private Bank bank;
+    private BackgroundMusicController musicController;
 
     /////Helper Classes
 
@@ -182,6 +183,7 @@ public class GameFlowController : MonoBehaviour
                 } else
                 {
                     Instantiate(scenePassFinalMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    musicController.stopMusic();
                 }
             }
             else
@@ -191,10 +193,12 @@ public class GameFlowController : MonoBehaviour
                 {
                     Debug.Log("failed last quota...");
                     Instantiate(sceneFailQuotaMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    musicController.stopMusic();
                 } else
                 {
                     Debug.Log("too much debt...");
                     Instantiate(sceneFailDebtMessage, new Vector3(0, 0, 0), Quaternion.identity);
+                    musicController.stopMusic();
                 }
             }
         }
@@ -232,6 +236,7 @@ public class GameFlowController : MonoBehaviour
         player = FindObjectOfType<Player>();
         market = FindObjectOfType<Market>();
         bank = FindObjectOfType<Bank>();
+        musicController = FindObjectOfType<BackgroundMusicController>();
 
         if (loadFromFile)
         {
@@ -270,6 +275,7 @@ public class GameFlowController : MonoBehaviour
             plots[i].buyPlot();
         }
 
+        musicController.startMusic();
     }
 
     /// <summary>

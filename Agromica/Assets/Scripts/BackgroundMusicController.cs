@@ -8,9 +8,13 @@ using UnityEngine;
 /// </summary>
 public class BackgroundMusicController : MonoBehaviour
 {
+    public float fadeOutSeconds = 1;
+
     private static BackgroundMusicController controllerInstance;
 
     private AudioSource audioSource;
+    private float baseVolume;
+    private Coroutine fadeCoroutine;
 
     private void Awake()
     {
@@ -27,6 +31,8 @@ public class BackgroundMusicController : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        baseVolume = audioSource.volume;
+        fadeCoroutine = null;
     }
 
     /// <summary>
@@ -38,6 +44,12 @@ public class BackgroundMusicController : MonoBehaviour
         {
             audioSource.Play();
         }
+        else if (fadeCoroutine != null)
+        {
+            Debug.Log("caught");
+            StopCoroutine(fadeCoroutine);
+            audioSource.volume = baseVolume;
+        }
     }
 
     /// <summary>
@@ -47,7 +59,19 @@ public class BackgroundMusicController : MonoBehaviour
     {
         if (audioSource.isPlaying)
         {
-            audioSource.Stop();
+            fadeCoroutine = StartCoroutine(fadeOutMusic());
         }
+    }
+
+    private IEnumerator fadeOutMusic()
+    {
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= (baseVolume/fadeOutSeconds) * Time.deltaTime;
+            yield return null;
+        }
+        audioSource.Stop();
+        audioSource.volume = baseVolume;
+        fadeCoroutine = null;
     }
 }
