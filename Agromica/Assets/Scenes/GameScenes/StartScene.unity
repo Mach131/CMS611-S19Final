@@ -1024,7 +1024,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Programers: Gwen Edgar, Cameron Ordone, Temi Taylor
+  m_text: 'Programmers: Gwen Edgar, Cameron Ordone, Temi Taylor
 
 
     Design: Kevin Beuchot
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_margin: {x: -46.070515, y: 0, z: 0, w: -438.88278}
   m_textInfo:
     textComponent: {fileID: 1018007033}
-    characterCount: 279
+    characterCount: 280
     spriteCount: 0
     spaceCount: 39
     wordCount: 35
@@ -2446,22 +2446,21 @@ MonoBehaviour:
 
 
     For each turn with a quota, you must have the required crops in your inventory
-    when you hit the "End Turn" button. Failure to do so will result in gaining 80
-    debt.
+    when you hit the "End Turn" button. Failure to do so will result in gaining debt.
 
 
     If you make it to the end of the last turn with no debt and meet the final quota,
     you win!
 
 
-    You can buy plots of land, plant crops, and harvest crops.
+    Farm: buy plots of land, plant crops, and harvest crops.
 
 
-    You can then buy and sell crops on the local market. Plan ahead though, because
-    the market will react to what you buy and sell!
+    Market: buy and sell crops. Plan ahead though, because the market will react to
+    what you buy and sell!
 
 
-    You can also visit the bank to get a loan, and pay off any debt you may have.'
+    Bank: get a loan, and pay off any debt you may have.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2538,11 +2537,11 @@ MonoBehaviour:
     lineCount: 13
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2823,7 +2822,7 @@ PrefabInstance:
     - target: {fileID: 4524071260165437681, guid: 16a7541e19481424ba71fbeb57b7ab97,
         type: 3}
       propertyPath: targetSceneName
-      value: ScenarioScene22
+      value: ScenarioScene1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16a7541e19481424ba71fbeb57b7ab97, type: 3}

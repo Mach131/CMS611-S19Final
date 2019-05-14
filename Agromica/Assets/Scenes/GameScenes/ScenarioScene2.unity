@@ -654,6 +654,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 169272796254627566, guid: cbe9ef6c5a3e84b4f8844ce54cfee9e3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 169272797456991763, guid: cbe9ef6c5a3e84b4f8844ce54cfee9e3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -692,6 +697,11 @@ PrefabInstance:
     - target: {fileID: 169272797361525264, guid: cbe9ef6c5a3e84b4f8844ce54cfee9e3,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 169272797361525264, guid: cbe9ef6c5a3e84b4f8844ce54cfee9e3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 169272797386282631, guid: cbe9ef6c5a3e84b4f8844ce54cfee9e3,
@@ -1037,7 +1047,7 @@ PrefabInstance:
     - target: {fileID: 169272796802189734, guid: cbe9ef6c5a3e84b4f8844ce54cfee9e3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -74.99999
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 6245816138824504508, guid: cbe9ef6c5a3e84b4f8844ce54cfee9e3,
         type: 3}
@@ -1230,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 7007298482540127119, guid: 68f3eb9cb442b7e48bedb8228d38d5f5,
         type: 3}
       propertyPath: nextScene
-      value: ScenarioScene4
+      value: ScenarioScene3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68f3eb9cb442b7e48bedb8228d38d5f5, type: 3}
