@@ -1,8 +1,8 @@
 {
-	"rounds" : 12,
+	"rounds" : 9,
 	"plots":  3,
 	"debt":  0,
-	"money": 0,
+	"money": 50,
 	"plotPrice": 50,
 	"failureCost": 73,
 	"crops" : [
@@ -15,29 +15,24 @@
 			"plotGrowthSpritePaths" : ["Sprites/farmTaroSeeded", "Sprites/farmTaroGrowing", "Sprites/farmTaroGrown"]
 		},
 		{"cropName" : "Sugarcane", "turnsToGrow" : 3, "harvestAmount": 1, "iconResourcePath" : "Sprites/sugarcaneIcon",
-			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 1100, "mVarC2" : 40, "mVarS" : 1, "mVarD" : 1,
+			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 1100, "mVarC2" : 20, "mVarS" : 1, "mVarD" : 1,
 			"plotGrowthSpritePaths" : ["Sprites/farmSugarcaneSeeded", "Sprites/farmSugarcaneGrowing1", "Sprites/farmSugarcaneGrowing2", "Sprites/farmSugarcaneGrown"]
 		}
 	],
 	"quotas" : [
 		{"turnNumber" : 3, "cropRequirements" : [
-			{"cropName" : "Wheat", "requiredAmount" : 3},
-			{"cropName" : "Taro", "requiredAmount" : 0},
+			{"cropName" : "Wheat", "requiredAmount" : 2},
+			{"cropName" : "Taro", "requiredAmount" : 1},
 			{"cropName" : "Sugarcane", "requiredAmount" : 1}
 		]},
 		{"turnNumber" : 6, "cropRequirements" : [
-			{"cropName" : "Wheat", "requiredAmount" : 5},
-			{"cropName" : "Taro", "requiredAmount" : 2},
+			{"cropName" : "Wheat", "requiredAmount" : 2},
+			{"cropName" : "Taro", "requiredAmount" : 3},
 			{"cropName" : "Sugarcane", "requiredAmount" : 0}
 		]},
 		{"turnNumber" : 9, "cropRequirements" : [
 			{"cropName" : "Wheat", "requiredAmount" : 3},
-			{"cropName" : "Taro", "requiredAmount" : 1},
-			{"cropName" : "Sugarcane", "requiredAmount" : 1}
-		]},
-		{"turnNumber" : 12, "cropRequirements" : [
-			{"cropName" : "Wheat", "requiredAmount" : 6},
-			{"cropName" : "Taro", "requiredAmount" : 1},
+			{"cropName" : "Taro", "requiredAmount" : 2},
 			{"cropName" : "Sugarcane", "requiredAmount" : 1}
 		]}
 	]
