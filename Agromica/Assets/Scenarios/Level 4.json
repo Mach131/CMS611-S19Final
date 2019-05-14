@@ -4,7 +4,7 @@
 	"debt":  0,
 	"money": 100,
 	"plotPrice": 100,
-	"failureCost": 73,
+	"failureCost": 137,
 	"crops" : [
 		{"cropName" : "Wheat", "turnsToGrow" : 1, "harvestAmount": 1, "iconResourcePath" : "Sprites/wheatIcon",
 			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 3000, "mVarC2" : 200, "mVarS" : 10, "mVarD" : 10,

@@ -4,10 +4,10 @@
 	"debt":  0,
 	"money": 0,
 	"plotPrice": 100,
-	"failureCost": 73,
+	"failureCost": 91,
 	"crops" : [
 		{"cropName" : "Wheat", "turnsToGrow" : 12, "harvestAmount": 1, "iconResourcePath" : "Sprites/wheatIcon",
-			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 3500, "mVarC2" : 350, "mVarS" : 10, "mVarD" : 10,
+			"baseSupply" : 100, "baseDemand" : 100, "mVarC1" : 3000, "mVarC2" : 300, "mVarS" : 10, "mVarD" : 10,
 			"plotGrowthSpritePaths" : ["Sprites/farmWheatSeeded", "Sprites/farmWheatGrown"]
 		},
 		{"cropName" : "Taro", "turnsToGrow" : 2, "harvestAmount": 1, "iconResourcePath" : "Sprites/taroIcon",
