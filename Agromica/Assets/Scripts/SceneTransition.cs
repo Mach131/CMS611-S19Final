@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     public string targetSceneName;
+    [Tooltip("overrides targetSceneName")]
+    public bool reloadCurrentScene = false;
 
     private SceneTransitionFader transitionFader;
     private bool transitionActivated;
@@ -17,6 +19,11 @@ public class SceneTransition : MonoBehaviour
     {
         transitionFader = FindObjectOfType<SceneTransitionFader>();
         transitionActivated = false;
+
+        if (reloadCurrentScene)
+        {
+            targetSceneName = SceneManager.GetActiveScene().name;
+        }
     }
 
     /// <summary>

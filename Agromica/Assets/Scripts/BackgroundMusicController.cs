@@ -46,7 +46,6 @@ public class BackgroundMusicController : MonoBehaviour
         }
         else if (fadeCoroutine != null)
         {
-            Debug.Log("caught");
             StopCoroutine(fadeCoroutine);
             audioSource.volume = baseVolume;
         }
