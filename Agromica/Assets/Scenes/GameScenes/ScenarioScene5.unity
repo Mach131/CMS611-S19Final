@@ -1251,12 +1251,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scenarioData
       value: 
-      objectReference: {fileID: 4900000, guid: afa9bcfbf0b578d4fb0f51d091a0abcc, type: 3}
-    - target: {fileID: 7007298482540127119, guid: 68f3eb9cb442b7e48bedb8228d38d5f5,
-        type: 3}
-      propertyPath: nextScene
-      value: ScenarioScene5
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4900000, guid: b803310752963a5479c33fc2022774b9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68f3eb9cb442b7e48bedb8228d38d5f5, type: 3}
 --- !u!1001 &8901988621580100280
